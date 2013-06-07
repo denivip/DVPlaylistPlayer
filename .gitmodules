@@ -1,0 +1,3 @@
+[submodule "THObservers"]
+	path = THObservers
+	url = git://github.com/th-in-gs/THObserversAndBinders.git
