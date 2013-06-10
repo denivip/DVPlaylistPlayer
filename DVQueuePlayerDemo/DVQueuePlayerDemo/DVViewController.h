@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <DVQueuePlayer/DVQueuePlayer.h>
 
-@interface DVViewController : UIViewController
+@interface DVViewController : UIViewController <DVQueuePlayerDataSource, DVQueuePlayerDelegate>
 
 @end

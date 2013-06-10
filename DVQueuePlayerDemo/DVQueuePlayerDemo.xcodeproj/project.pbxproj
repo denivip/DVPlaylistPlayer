@@ -23,6 +23,16 @@
 		74E17C94176222EC00F62507 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17C93176222EC00F62507 /* MediaPlayer.framework */; };
 		74E17C96176222F100F62507 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17C95176222F100F62507 /* AudioToolbox.framework */; };
 		74E17C981762231E00F62507 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17C971762231E00F62507 /* CoreMedia.framework */; };
+		74E17CA01765E62900F62507 /* DVPlayerUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E17C9F1765E62900F62507 /* DVPlayerUIView.m */; };
+		74E17CA41765E6FE00F62507 /* DVPlayerSeekBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E17CA31765E6FE00F62507 /* DVPlayerSeekBar.m */; };
+		74E17CA71765E74900F62507 /* DVPlayerVolumeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E17CA61765E74900F62507 /* DVPlayerVolumeBar.m */; };
+		74E17CAF1765E9DD00F62507 /* noVolume.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CA91765E9DD00F62507 /* noVolume.png */; };
+		74E17CB01765E9DD00F62507 /* noVolume@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CAA1765E9DD00F62507 /* noVolume@2x.png */; };
+		74E17CB11765E9DD00F62507 /* scrollDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CAB1765E9DD00F62507 /* scrollDown.png */; };
+		74E17CB21765E9DD00F62507 /* scrollDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CAC1765E9DD00F62507 /* scrollDown@2x.png */; };
+		74E17CB31765E9DD00F62507 /* volume.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CAD1765E9DD00F62507 /* volume.png */; };
+		74E17CB41765E9DD00F62507 /* volume@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CAE1765E9DD00F62507 /* volume@2x.png */; };
+		74E17CB61765ED9B00F62507 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17CB51765ED9B00F62507 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +57,19 @@
 		74E17C93176222EC00F62507 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		74E17C95176222F100F62507 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		74E17C971762231E00F62507 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		74E17C9E1765E62900F62507 /* DVPlayerUIView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVPlayerUIView.h; sourceTree = "<group>"; };
+		74E17C9F1765E62900F62507 /* DVPlayerUIView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVPlayerUIView.m; sourceTree = "<group>"; };
+		74E17CA21765E6FE00F62507 /* DVPlayerSeekBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVPlayerSeekBar.h; sourceTree = "<group>"; };
+		74E17CA31765E6FE00F62507 /* DVPlayerSeekBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVPlayerSeekBar.m; sourceTree = "<group>"; };
+		74E17CA51765E74900F62507 /* DVPlayerVolumeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVPlayerVolumeBar.h; sourceTree = "<group>"; };
+		74E17CA61765E74900F62507 /* DVPlayerVolumeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVPlayerVolumeBar.m; sourceTree = "<group>"; };
+		74E17CA91765E9DD00F62507 /* noVolume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = noVolume.png; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/noVolume.png"; sourceTree = "<group>"; };
+		74E17CAA1765E9DD00F62507 /* noVolume@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "noVolume@2x.png"; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/noVolume@2x.png"; sourceTree = "<group>"; };
+		74E17CAB1765E9DD00F62507 /* scrollDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scrollDown.png; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/scrollDown.png"; sourceTree = "<group>"; };
+		74E17CAC1765E9DD00F62507 /* scrollDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "scrollDown@2x.png"; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/scrollDown@2x.png"; sourceTree = "<group>"; };
+		74E17CAD1765E9DD00F62507 /* volume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = volume.png; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/volume.png"; sourceTree = "<group>"; };
+		74E17CAE1765E9DD00F62507 /* volume@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "volume@2x.png"; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/volume@2x.png"; sourceTree = "<group>"; };
+		74E17CB51765ED9B00F62507 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74E17CB61765ED9B00F62507 /* QuartzCore.framework in Frameworks */,
 				74E17C981762231E00F62507 /* CoreMedia.framework in Frameworks */,
 				74E17C96176222F100F62507 /* AudioToolbox.framework in Frameworks */,
 				74E17C94176222EC00F62507 /* MediaPlayer.framework in Frameworks */,
@@ -89,6 +113,7 @@
 		74E17C4E1761D28200F62507 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				74E17CB51765ED9B00F62507 /* QuartzCore.framework */,
 				74E17C971762231E00F62507 /* CoreMedia.framework */,
 				74E17C95176222F100F62507 /* AudioToolbox.framework */,
 				74E17C93176222EC00F62507 /* MediaPlayer.framework */,
@@ -103,6 +128,8 @@
 		74E17C551761D28200F62507 /* DVQueuePlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				74E17CA81765E9C500F62507 /* images */,
+				74E17CA11765E6E900F62507 /* PlayerInterface */,
 				74E17C5E1761D28200F62507 /* DVAppDelegate.h */,
 				74E17C5F1761D28200F62507 /* DVAppDelegate.m */,
 				74E17C671761D28200F62507 /* DVViewController.h */,
@@ -133,6 +160,32 @@
 				74E17C721761D29700F62507 /* DVQueuePlayer.framework */,
 			);
 			name = Vendor;
+			sourceTree = "<group>";
+		};
+		74E17CA11765E6E900F62507 /* PlayerInterface */ = {
+			isa = PBXGroup;
+			children = (
+				74E17C9E1765E62900F62507 /* DVPlayerUIView.h */,
+				74E17C9F1765E62900F62507 /* DVPlayerUIView.m */,
+				74E17CA21765E6FE00F62507 /* DVPlayerSeekBar.h */,
+				74E17CA31765E6FE00F62507 /* DVPlayerSeekBar.m */,
+				74E17CA51765E74900F62507 /* DVPlayerVolumeBar.h */,
+				74E17CA61765E74900F62507 /* DVPlayerVolumeBar.m */,
+			);
+			name = PlayerInterface;
+			sourceTree = "<group>";
+		};
+		74E17CA81765E9C500F62507 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				74E17CA91765E9DD00F62507 /* noVolume.png */,
+				74E17CAA1765E9DD00F62507 /* noVolume@2x.png */,
+				74E17CAB1765E9DD00F62507 /* scrollDown.png */,
+				74E17CAC1765E9DD00F62507 /* scrollDown@2x.png */,
+				74E17CAD1765E9DD00F62507 /* volume.png */,
+				74E17CAE1765E9DD00F62507 /* volume@2x.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +245,12 @@
 				74E17C641761D28200F62507 /* Default@2x.png in Resources */,
 				74E17C661761D28200F62507 /* Default-568h@2x.png in Resources */,
 				74E17C6C1761D28200F62507 /* DVViewController.xib in Resources */,
+				74E17CAF1765E9DD00F62507 /* noVolume.png in Resources */,
+				74E17CB01765E9DD00F62507 /* noVolume@2x.png in Resources */,
+				74E17CB11765E9DD00F62507 /* scrollDown.png in Resources */,
+				74E17CB21765E9DD00F62507 /* scrollDown@2x.png in Resources */,
+				74E17CB31765E9DD00F62507 /* volume.png in Resources */,
+				74E17CB41765E9DD00F62507 /* volume@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +264,9 @@
 				74E17C5C1761D28200F62507 /* main.m in Sources */,
 				74E17C601761D28200F62507 /* DVAppDelegate.m in Sources */,
 				74E17C691761D28200F62507 /* DVViewController.m in Sources */,
+				74E17CA01765E62900F62507 /* DVPlayerUIView.m in Sources */,
+				74E17CA41765E6FE00F62507 /* DVPlayerSeekBar.m in Sources */,
+				74E17CA71765E74900F62507 /* DVPlayerVolumeBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +351,8 @@
 		74E17C701761D28200F62507 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mihail Grushin (NVD9NMZMNS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mihail Grushin (NVD9NMZMNS)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Queue Player SDK/Products\"",
@@ -297,6 +361,8 @@
 				GCC_PREFIX_HEADER = "DVQueuePlayerDemo/DVQueuePlayerDemo-Prefix.pch";
 				INFOPLIST_FILE = "DVQueuePlayerDemo/DVQueuePlayerDemo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "F86AC297-3316-4A90-818B-A1EB706490BB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F86AC297-3316-4A90-818B-A1EB706490BB";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -304,6 +370,8 @@
 		74E17C711761D28200F62507 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mihail Grushin (NVD9NMZMNS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mihail Grushin (NVD9NMZMNS)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../Queue Player SDK/Products\"",
@@ -312,6 +380,8 @@
 				GCC_PREFIX_HEADER = "DVQueuePlayerDemo/DVQueuePlayerDemo-Prefix.pch";
 				INFOPLIST_FILE = "DVQueuePlayerDemo/DVQueuePlayerDemo-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "F86AC297-3316-4A90-818B-A1EB706490BB";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F86AC297-3316-4A90-818B-A1EB706490BB";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
