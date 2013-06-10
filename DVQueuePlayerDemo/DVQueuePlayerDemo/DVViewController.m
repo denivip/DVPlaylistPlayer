@@ -23,16 +23,14 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 @property (nonatomic, strong) DVPlayerUIView *playerInterface;
 
 @property (nonatomic, strong) UITableView *queueTableView;
-@property (nonatomic, strong) UITextView *logView;
 @property (nonatomic, strong) UITextField *textField;
-@property (nonatomic, strong) UIButton *scrollDownButton;
 @end
 
 @implementation DVViewController
 
 -(NSArray *)arrayOfNames {
     if (!_arrayOfNames) {
-        _arrayOfNames = [NSArray arrayWithObjects:@"BipBop", @"Alayam", @"NASA", @"U", @"Sport", nil];
+        _arrayOfNames = [NSArray arrayWithObjects:@"BipBop", @"Alayam", @"NASA", @"UStream", @"EuroSport", nil];
     }
     
     return _arrayOfNames;
@@ -107,37 +105,6 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
     return _queueTableView;
 }
 
--(UITextView *)logView
-{
-    if (!_logView) {
-        _logView = [[UITextView alloc] init];
-        _logView.delegate = self;
-        _logView.editable = NO;
-        _logView.backgroundColor = [UIColor whiteColor];
-        _logView.layer.borderWidth = 1.f;
-        _logView.text = @"Start logging";
-    }
-    
-    return _logView;
-}
-
--(UIButton *)scrollDownButton
-{
-    if (!_scrollDownButton) {
-        _scrollDownButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        UIImage *scrollDownImage = [UIImage imageNamed:@"scrollDown"];
-        [_scrollDownButton setImage:scrollDownImage forState:UIControlStateNormal];
-        _scrollDownButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
-        _scrollDownButton.imageView.layer.cornerRadius = 4.f;
-        _scrollDownButton.alpha = .0f;
-        //        _scrollDownButton.hidden = YES;
-        
-        [_scrollDownButton addTarget:self action:@selector(scrollDownButtonTap) forControlEvents:UIControlEventTouchUpInside];
-    }
-    
-    return _scrollDownButton;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -150,8 +117,6 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
     
     [self.view addSubview:self.playerInterface];
     [self.view addSubview:self.queueTableView];
-    [self.view addSubview:self.logView];
-    [self.view addSubview:self.scrollDownButton];
 }
 
 - (void)viewDidLayoutSubviews
@@ -162,37 +127,28 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
     self.playerInterface.interfaceOrientation = self.interfaceOrientation;
     
     if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
-        self.queuePlayer.playerView.frame = self.view.bounds;
-        self.logView.frame = CGRectZero;
+        self.queuePlayer.playerView.frame = CGRectMake(0,
+                                                       0,
+                                                       self.view.bounds.size.width*2/3,
+                                                       self.view.bounds.size.height - interfaceHeight);
         self.playerInterface.frame = CGRectMake(0.f,
                                                 self.view.bounds.size.height - interfaceHeight,
-                                                self.view.bounds.size.width,
+                                                self.view.bounds.size.width*2/3,
                                                 interfaceHeight);
-        self.queueTableView.frame = CGRectMake(self.view.bounds.size.width,
+        self.queueTableView.frame = CGRectMake(CGRectGetMaxX(self.playerInterface.frame),
                                                0.f,
-                                               0.f,
-                                               0.f);
+                                               self.view.bounds.size.width - self.playerInterface.frame.size.width,
+                                               self.view.bounds.size.height);
     } else {
-        self.logView.frame = CGRectMake(0.f,
-                                        0.f,
-                                        3*self.view.bounds.size.width/4.f,
-                                        halfSize.height - interfaceHeight/2.f);
-        
-        CGSize size = self.scrollDownButton.imageView.image.size;
-        self.scrollDownButton.frame = CGRectMake(self.logView.bounds.size.width - size.width - 6.f,
-                                                 self.logView.bounds.size.height - size.height - 6.f,
-                                                 size.width,
-                                                 size.height);
-        
-        self.queueTableView.frame = CGRectMake(CGRectGetMaxX(self.logView.frame),
+        self.queueTableView.frame = CGRectMake(0.f,
                                                0.f,
-                                               CGRectGetMaxX(self.view.bounds) - CGRectGetMaxX(self.logView.frame),
+                                               self.view.bounds.size.width,
                                                halfSize.height - interfaceHeight/2.f);
         
         self.queuePlayer.playerView.frame = CGRectMake(0.f,
-                                            CGRectGetMaxY(self.logView.frame),
-                                            self.view.bounds.size.width,
-                                            halfSize.height - interfaceHeight/2.f);
+                                                       CGRectGetMaxY(self.queueTableView.frame),
+                                                       self.view.bounds.size.width,
+                                                       halfSize.height - interfaceHeight/2.f);
         
         self.playerInterface.frame = CGRectMake(0.f,
                                                 CGRectGetMaxY(self.queuePlayer.playerView.frame),
@@ -278,18 +234,6 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 //        [self.queuePlayer seekToPosition:self.playerInterface.elapsed+5.f];
 }
 
-- (void)scrollDownButtonTap
-{
-    [self.logView setContentOffset:CGPointMake(0.f,
-                                               self.logView.contentSize.height - self.logView.bounds.size.height)
-                          animated:YES];
-    
-    [UIView animateWithDuration:0.4f
-                     animations:^{
-                         self.scrollDownButton.alpha = 0.f;
-                     }];
-}
-
 #pragma mark - Queue player data source
 
 -(NSUInteger)numberOfPlayerItems {
@@ -315,7 +259,7 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 30.f;
+    return (self.arrayOfItems.count < 6)?self.queueTableView.bounds.size.height/self.arrayOfItems.count:40.f;
 }
 
 #pragma mark - UITableView data source
@@ -377,16 +321,5 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 //        [self.queueTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
 //    }
 //}
-
-#pragma mark - Scroll View delegate
-
--(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
-{
-    if (scrollView.contentOffset.y <= scrollView.contentSize.height - scrollView.bounds.size.height)
-        [UIView animateWithDuration:0.4f
-                         animations:^{
-                             self.scrollDownButton.alpha = 0.7f;
-                         }];
-}
 
 @end
