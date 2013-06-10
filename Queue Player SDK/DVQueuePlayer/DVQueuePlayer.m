@@ -11,6 +11,17 @@
 #import "DVQueuePlayerView.h"
 #import "THObserver.h"
 
+NSString *const DVQueuePlayerStartPlayingEvent = @"DVQueuePlayerStartPlayingEvent";
+NSString *const DVQueuePlayerResumePlayingEvent = @"DVQueuePlayerResumePlayingEvent";
+NSString *const DVQueuePlayerPausePlayingEvent = @"DVQueuePlayerPausePlayingEvent";
+NSString *const DVQueuePlayerStopPlayingEvent = @"DVQueuePlayerStopPlayingEvent";
+NSString *const DVQueuePlayerMovedToNextTrackEvent = @"DVQueuePlayerMovedToNextTrackEvent";
+NSString *const DVQueuePlayerMovedToPreviousTrackEvent = @"DVQueuePlayerMovedToPreviousTrackEvent";
+NSString *const DVQueuePlayerMuteEvent = @"DVQueuePlayerMuteEvent";
+NSString *const DVQueuePlayerUnmuteEvent = @"DVQueuePlayerUnmuteEvent";
+NSString *const DVQueuePlayerVolumeChangedEvent = @"DVQueuePlayerVolumeChangedEvent";
+NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
+
 @interface DVQueuePlayer()
 
 @property (nonatomic, strong) AVPlayer *player;
@@ -44,7 +55,7 @@
     if (!self.dataSource ||
         [self.dataSource numberOfPlayerItems] < 1 ||
         index > [self.dataSource numberOfPlayerItems]) {
-        #warning TODO Fire error event
+        [self fireEvent:DVQueuePlayerErrorEvent];
         return;
     }
     
@@ -58,7 +69,8 @@
                 break;
              
             case AVPlayerItemStatusFailed: {
-            #warning TODO Fire error event
+                [self.invocationOnError invoke];
+                [self fireEvent:DVQueuePlayerErrorEvent];
             }
                 break;
                 
@@ -75,13 +87,13 @@
         if (self.player.rate > 0 && shouldPlay) {
             shouldPlay = NO;
             self.state = DVQueuePlayerStatePlaying;
-#warning TODO Fire play event
+            [self fireEvent:DVQueuePlayerStartPlayingEvent];
         }
         else if (self.player.rate > 0) {
-#warning TODO Fire resume event
+            [self fireEvent:DVQueuePlayerResumePlayingEvent];
         }
         else if (self.player.rate == 0 && !shouldPlay) {
-#warning TODO Fire pause event
+            [self fireEvent:DVQueuePlayerPausePlayingEvent];
         }
     }];
     
@@ -113,6 +125,7 @@
 -(void)stop {
     NSLog(@"Stop");
     self.invocationOnError = nil;
+    [self fireEvent:DVQueuePlayerStopPlayingEvent];
 }
 
 -(void)next {
@@ -121,6 +134,8 @@
     self.invocationOnError = [NSInvocation invocationWithMethodSignature:[[self class] instanceMethodSignatureForSelector:@selector(next)]];
     self.invocationOnError.target = self;
     self.invocationOnError.selector = @selector(next);
+    
+    [self playMediaWithIndex:_currentItemIndex];
 }
 
 -(void)previous {
@@ -129,6 +144,8 @@
     self.invocationOnError = [NSInvocation invocationWithMethodSignature:[[self class] instanceMethodSignatureForSelector:@selector(previous)]];
     self.invocationOnError.target = self;
     self.invocationOnError.selector = @selector(previous);
+    
+    [self playMediaWithIndex:_currentItemIndex];
 }
 
 #pragma mark - Volume Control
@@ -167,6 +184,15 @@
     
     if (_volume > 0.f) {
         _muted = NO;
+    }
+
+#pragma mark - Firing events
+
+- (void)fireEvent:(NSString *)eventType {
+    if ([eventType isEqualToString:DVQueuePlayerUpdateProgressEvent]) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayer:didUpdateProgress:)]) {
+            [self.delegate queuePlayer:self didUpdateProgress:self.progress];
+        }
     }
 }
 

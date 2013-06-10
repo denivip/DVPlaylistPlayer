@@ -15,11 +15,12 @@ typedef NS_ENUM(NSUInteger, DVQueuePlayerState) {
     DVQueuePlayerStatePlaying
 };
 
-@protocol DVQueuePlayerDataSource;
+@protocol DVQueuePlayerDataSource, DVQueuePlayerDelegate;
 
 @interface DVQueuePlayer : NSObject
 
 @property (nonatomic, weak) id<DVQueuePlayerDataSource> dataSource;
+@property (nonatomic, weak) id<DVQueuePlayerDelegate> delegate;
 @property (nonatomic, readonly, strong) UIView *playerView;
 @property (nonatomic) float volume;
 @property (nonatomic, readonly, getter = isMuted) BOOL muted;
@@ -37,10 +38,17 @@ typedef NS_ENUM(NSUInteger, DVQueuePlayerState) {
 
 @end
 
-@protocol DVQueuePlayerDataSource
+@protocol DVQueuePlayerDataSource <NSObject>
 
 @required
 - (NSUInteger)numberOfPlayerItems;
 - (AVPlayerItem *)queuePlayer:(DVQueuePlayer *)queuePlayer playerItemForIndex:(NSUInteger)index;
+
+@end
+
+@protocol DVQueuePlayerDelegate <NSObject>
+
+@optional
+- (void)queuePlayer:(DVQueuePlayer *)queuePlayer didUpdateProgress:(DVProgress)progress;
 
 @end
