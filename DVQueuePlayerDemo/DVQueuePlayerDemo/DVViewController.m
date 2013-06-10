@@ -185,19 +185,16 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 
 - (void)stopButtonTap
 {
-    NSLog(@"Stop");
     [self.queuePlayer stop];
 }
 
 - (void)prevButtonTap
 {
-    NSLog(@"Previous");
     [self.queuePlayer previous];
 }
 
 - (void)nextButtonTap
 {
-    NSLog(@"Next");
     [self.queuePlayer next];
 }
 

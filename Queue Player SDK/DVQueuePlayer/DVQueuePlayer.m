@@ -196,13 +196,52 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     if (_volume > 0.f) {
         _muted = NO;
     }
+    
+    [self configureVolume];
+}
 
 #pragma mark - Firing events
 
 - (void)fireEvent:(NSString *)eventType {
-    if ([eventType isEqualToString:DVQueuePlayerUpdateProgressEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayer:didUpdateProgress:)]) {
-            [self.delegate queuePlayer:self didUpdateProgress:self.progress];
+    if ([eventType isEqualToString:DVQueuePlayerStartPlayingEvent]) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidStartPlaying:)]) {
+            [self.delegate queuePlayerDidStartPlaying:self];
+        }
+    } else if ([eventType isEqualToString:DVQueuePlayerPausePlayingEvent]) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidPausePlaying:)]) {
+            [self.delegate queuePlayerDidPausePlaying:self];
+        }
+    } else if ([eventType isEqualToString:DVQueuePlayerResumePlayingEvent]) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidResumePlaying:)]) {
+            [self.delegate queuePlayerDidResumePlaying:self];
+        }
+    } else if ([eventType isEqualToString:DVQueuePlayerStopPlayingEvent]) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidStopPlaying:)]) {
+            [self.delegate queuePlayerDidStopPlaying:self];
+        }
+    } else if ([eventType isEqualToString:DVQueuePlayerMovedToNextTrackEvent]) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidMovedToNext:)]) {
+            [self.delegate queuePlayerDidMovedToNext:self];
+        }
+    } else if ([eventType isEqualToString:DVQueuePlayerMovedToPreviousTrackEvent]) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidMovedToPrevious:)]) {
+            [self.delegate queuePlayerDidMovedToPrevious:self];
+        }
+    } else if ([eventType isEqualToString:DVQueuePlayerMuteEvent]) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidMute:)]) {
+            [self.delegate queuePlayerDidMute:self];
+        }
+    } else if ([eventType isEqualToString:DVQueuePlayerUnmuteEvent]) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidUnmute:)]) {
+            [self.delegate queuePlayerDidUnmute:self];
+        }
+    } else if ([eventType isEqualToString:DVQueuePlayerVolumeChangedEvent]) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidChangeVolume:)]) {
+            [self.delegate queuePlayerDidChangeVolume:self];
+        }
+    } else if ([eventType isEqualToString:DVQueuePlayerErrorEvent]) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayerFailedToPlay:)]) {
+            [self.delegate queuePlayerFailedToPlay:self];
         }
     }
 }
