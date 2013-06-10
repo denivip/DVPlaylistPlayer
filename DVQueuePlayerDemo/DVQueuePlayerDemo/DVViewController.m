@@ -18,7 +18,7 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 
 @interface DVViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
 @property (nonatomic, strong) DVQueuePlayer *queuePlayer;
-@property (nonatomic, strong) NSArray *arrayOfItems;
+@property (nonatomic, strong) NSArray *urlArray;
 @property (nonatomic, strong) NSArray *arrayOfNames;
 @property (nonatomic, strong) DVPlayerUIView *playerInterface;
 
@@ -36,22 +36,17 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
     return _arrayOfNames;
 }
 
--(NSArray *)arrayOfItems {
-    if (!_arrayOfItems) {
+-(NSArray *)urlArray {
+    if (!_urlArray) {
         NSURL *url1 = [NSURL URLWithString:urlString1];
         NSURL *url2 = [NSURL URLWithString:urlString2];
         NSURL *url3 = [NSURL URLWithString:urlString3];
         NSURL *url4 = [NSURL URLWithString:urlString4];
         NSURL *url5 = [NSURL URLWithString:urlString5];
-        AVPlayerItem *playerItem1 = [AVPlayerItem playerItemWithURL:url1];
-        AVPlayerItem *playerItem2 = [AVPlayerItem playerItemWithURL:url2];
-        AVPlayerItem *playerItem3 = [AVPlayerItem playerItemWithURL:url3];
-        AVPlayerItem *playerItem4 = [AVPlayerItem playerItemWithURL:url4];
-        AVPlayerItem *playerItem5 = [AVPlayerItem playerItemWithURL:url5];
-        _arrayOfItems = [NSArray arrayWithObjects:playerItem1, playerItem2, playerItem3, playerItem4, playerItem5, nil];
+        _urlArray = [NSArray arrayWithObjects:url1, url2, url3, url4, url5, nil];
     }
     
-    return _arrayOfItems;
+    return _urlArray;
 }
 
 -(DVQueuePlayer *)queuePlayer {
@@ -234,11 +229,12 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 #pragma mark - Queue player data source
 
 -(NSUInteger)numberOfPlayerItems {
-    return self.arrayOfItems.count;
+    return self.urlArray.count;
 }
 
 -(AVPlayerItem *)queuePlayer:(DVQueuePlayer *)queuePlayer playerItemForIndex:(NSUInteger)index {
-    return [self.arrayOfItems objectAtIndex:index];
+    AVPlayerItem *item = [[AVPlayerItem alloc] initWithURL:[self.urlArray objectAtIndex:index]];
+    return item;
 }
 
 #pragma mark - Queue player delegate
@@ -248,22 +244,20 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row < self.arrayOfItems.count)
+    if (indexPath.row < self.urlArray.count)
         [self.queuePlayer playMediaWithIndex:indexPath.row];
-//    else if (indexPath.row == self.arrayOfItems.count)
-//        [self.textField becomeFirstResponder];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return (self.arrayOfItems.count < 6)?self.queueTableView.bounds.size.height/self.arrayOfItems.count:40.f;
+    return (self.urlArray.count < 6)?self.queueTableView.bounds.size.height/self.urlArray.count:40.f;
 }
 
 #pragma mark - UITableView data source
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.arrayOfItems.count;
+    return self.urlArray.count;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -275,48 +269,12 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
     
-    if (indexPath.row == self.arrayOfItems.count) {
-//        [self.textField removeFromSuperview];
-//        self.textField = [[UITextField alloc] initWithFrame:CGRectMake(0.f, 0.f,
-//                                                                       self.queueTableView.bounds.size.width,
-//                                                                       self.queueTableView.rowHeight)];
-//        self.textField.delegate = self;
-//        self.textField.keyboardType = UIKeyboardTypeDecimalPad;
-//        self.textField.clearsOnBeginEditing = YES;
-//        self.textField.text = @"+";
-//        self.textField.font = [UIFont fontWithName:@"HelveticaNeue-Condensed" size:12.f];
-//        self.textField.textAlignment = NSTextAlignmentCenter;
-//        [cell.contentView addSubview:self.textField];
-    } else {
-        cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Condensed" size:10.f];
-        cell.textLabel.backgroundColor = [UIColor clearColor];
-        cell.textLabel.text = [self.arrayOfNames objectAtIndex:indexPath.row];
-    }
+    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Condensed" size:10.f];
+    cell.textLabel.backgroundColor = [UIColor clearColor];
+    cell.textLabel.text = [self.arrayOfNames objectAtIndex:indexPath.row];
     cell.clipsToBounds = YES;
     
     return cell;
 }
-
-//#pragma mark - Text Field delegate
-//
-//-(void)textFieldDidEndEditing:(UITextField *)textField
-//{
-//    if ([self.textField.text isEqualToString:@""]) {
-//        self.textField.text = @"+";
-//        return;
-//    }
-//    
-//    UITableViewCell *cell = [self.queueTableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:self.arrayOfItems.count inSection:0]];
-//    cell.textLabel.text = self.textField.text;
-//    [self.textField removeFromSuperview];
-//    [self.arrayOfItems addObject:@([cell.textLabel.text integerValue])];
-//    [self.queueTableView reloadData];
-//    
-//    if (self.playbackState == MVDPlayerPlaybackStatePlay) {
-//        [self.player addMediaToQueue:[cell.textLabel.text integerValue]];
-//        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.player.queueIndex inSection:0];
-//        [self.queueTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
-//    }
-//}
 
 @end
