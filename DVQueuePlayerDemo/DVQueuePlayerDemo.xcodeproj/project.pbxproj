@@ -19,6 +19,10 @@
 		74E17C691761D28200F62507 /* DVViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E17C681761D28200F62507 /* DVViewController.m */; };
 		74E17C6C1761D28200F62507 /* DVViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 74E17C6A1761D28200F62507 /* DVViewController.xib */; };
 		74E17C731761D29700F62507 /* DVQueuePlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17C721761D29700F62507 /* DVQueuePlayer.framework */; };
+		74E17C92176222E700F62507 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17C91176222E700F62507 /* AVFoundation.framework */; };
+		74E17C94176222EC00F62507 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17C93176222EC00F62507 /* MediaPlayer.framework */; };
+		74E17C96176222F100F62507 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17C95176222F100F62507 /* AudioToolbox.framework */; };
+		74E17C981762231E00F62507 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17C971762231E00F62507 /* CoreMedia.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +43,10 @@
 		74E17C681761D28200F62507 /* DVViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DVViewController.m; sourceTree = "<group>"; };
 		74E17C6B1761D28200F62507 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DVViewController.xib; sourceTree = "<group>"; };
 		74E17C721761D29700F62507 /* DVQueuePlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVQueuePlayer.framework; path = "../Queue Player SDK/Products/DVQueuePlayer.framework"; sourceTree = "<group>"; };
+		74E17C91176222E700F62507 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		74E17C93176222EC00F62507 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		74E17C95176222F100F62507 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		74E17C971762231E00F62507 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +54,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74E17C981762231E00F62507 /* CoreMedia.framework in Frameworks */,
+				74E17C96176222F100F62507 /* AudioToolbox.framework in Frameworks */,
+				74E17C94176222EC00F62507 /* MediaPlayer.framework in Frameworks */,
+				74E17C92176222E700F62507 /* AVFoundation.framework in Frameworks */,
 				74E17C731761D29700F62507 /* DVQueuePlayer.framework in Frameworks */,
 				74E17C501761D28200F62507 /* UIKit.framework in Frameworks */,
 				74E17C521761D28200F62507 /* Foundation.framework in Frameworks */,
@@ -77,6 +89,10 @@
 		74E17C4E1761D28200F62507 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				74E17C971762231E00F62507 /* CoreMedia.framework */,
+				74E17C95176222F100F62507 /* AudioToolbox.framework */,
+				74E17C93176222EC00F62507 /* MediaPlayer.framework */,
+				74E17C91176222E700F62507 /* AVFoundation.framework */,
 				74E17C4F1761D28200F62507 /* UIKit.framework */,
 				74E17C511761D28200F62507 /* Foundation.framework */,
 				74E17C531761D28200F62507 /* CoreGraphics.framework */,
