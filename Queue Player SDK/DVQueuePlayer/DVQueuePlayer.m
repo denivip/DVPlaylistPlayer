@@ -11,6 +11,8 @@
 #import "DVQueuePlayerView.h"
 #import "THObserver.h"
 
+typedef void(^timeObserverBlock)(CMTime time);
+
 NSString *const DVQueuePlayerStartPlayingEvent = @"DVQueuePlayerStartPlayingEvent";
 NSString *const DVQueuePlayerResumePlayingEvent = @"DVQueuePlayerResumePlayingEvent";
 NSString *const DVQueuePlayerPausePlayingEvent = @"DVQueuePlayerPausePlayingEvent";
@@ -24,14 +26,15 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
 
 @interface DVQueuePlayer()
 
-@property (nonatomic, strong) AVPlayer *player;
-@property (nonatomic, strong) AVPlayerItem *currentItem;
-@property (nonatomic) NSUInteger currentItemIndex;
 @property (nonatomic, strong) NSInvocation *invocationOnError;
 @property (nonatomic) float unmuteVolume;
 @property (nonatomic, strong) THObserver *playerItemStatusObserver;
 @property (nonatomic, strong) THObserver *playerRateObserver;
-@property (nonatomic, strong) THObserver *playerPeriodicTimeObserver;
+@property (nonatomic, strong) id playerPeriodicTimeObserver;
+
+@property (nonatomic) CMTime periodicTimeObserverTime;
+@property (nonatomic) dispatch_queue_t periodicTimeObserverQueue;
+@property (nonatomic, strong) timeObserverBlock periodicTimeObserverBlock;
 
 @end
 
@@ -82,17 +85,17 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     
     AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
     
-    __block BOOL shouldPlay = YES;
+    __block BOOL onStartPlaying = YES;
     self.playerRateObserver = [THObserver observerForObject:player keyPath:@"player.rate" block:^{
-        if (self.player.rate > 0 && shouldPlay) {
-            shouldPlay = NO;
+        if (self.player.rate > 0 && onStartPlaying) {
+            onStartPlaying = NO;
             self.state = DVQueuePlayerStatePlaying;
             [self fireEvent:DVQueuePlayerStartPlayingEvent];
         }
         else if (self.player.rate > 0) {
             [self fireEvent:DVQueuePlayerResumePlayingEvent];
         }
-        else if (self.player.rate == 0 && !shouldPlay) {
+        else if (self.player.rate == 0 && !onStartPlaying) {
             [self fireEvent:DVQueuePlayerPausePlayingEvent];
         }
     }];
@@ -102,9 +105,11 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
         self.playerPeriodicTimeObserver = nil;
     }
     
-    self.playerPeriodicTimeObserver = [player addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:NULL usingBlock:^(CMTime time) {
-//        [self updateProgress];
-    }];
+    if (CMTIME_IS_VALID(self.periodicTimeObserverTime)) {
+        self.playerPeriodicTimeObserver = [player addPeriodicTimeObserverForInterval:self.periodicTimeObserverTime
+                                                                               queue:self.periodicTimeObserverQueue
+                                                                          usingBlock:self.periodicTimeObserverBlock];
+    }
 
     ((DVQueuePlayerView *)self.playerView).playerLayer.player = player;
     self.currentItem = playerItem;
@@ -146,6 +151,12 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     self.invocationOnError.selector = @selector(previous);
     
     [self playMediaWithIndex:_currentItemIndex];
+}
+
+-(void)addPeriodicTimeObserverForInterval:(CMTime)interval queue:(dispatch_queue_t)queue usingBlock:(void (^)(CMTime))block {
+    self.periodicTimeObserverTime = interval;
+    self.periodicTimeObserverQueue = queue;
+    self.periodicTimeObserverBlock = block;
 }
 
 #pragma mark - Volume Control
