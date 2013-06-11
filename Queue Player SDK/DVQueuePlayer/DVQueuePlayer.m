@@ -52,17 +52,30 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
 
 #pragma mark - Player control methods
 
--(void)playMediaWithIndex:(NSUInteger)index {
-    NSLog(@"Play index %d", index);
+- (void)playMediaWithIndex:(NSInteger)index {
     
     if (!self.dataSource ||
-        [self.dataSource numberOfPlayerItems] < 1 ||
-        index > [self.dataSource numberOfPlayerItems]) {
+        [self.dataSource numberOfPlayerItems] < 1) {
         [self fireEvent:DVQueuePlayerErrorEvent];
         return;
     }
     
-    AVPlayerItem *playerItem = [self.dataSource queuePlayer:self playerItemForIndex:index];
+    _currentItemIndex = index;
+    
+    [self playCurrentMedia];
+}
+
+- (void)playCurrentMedia {
+    if (_currentItemIndex < 0) {
+        _currentItemIndex = 0;
+    } else if (_currentItemIndex > [self.dataSource numberOfPlayerItems] - 1) {
+        _currentItemIndex = [self.dataSource numberOfPlayerItems] - 1;
+        [self stop];
+        return;
+    }
+    
+    
+    AVPlayerItem *playerItem = [self.dataSource queuePlayer:self playerItemForIndex:_currentItemIndex];
     
     self.playerItemStatusObserver = [THObserver observerForObject:playerItem keyPath:@"status" block:^{
         switch (self.currentItem.status) {
@@ -139,8 +152,8 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     self.invocationOnError = [NSInvocation invocationWithMethodSignature:[[self class] instanceMethodSignatureForSelector:@selector(next)]];
     self.invocationOnError.target = self;
     self.invocationOnError.selector = @selector(next);
+    [self playCurrentMedia];
     
-    [self playMediaWithIndex:_currentItemIndex];
 }
 
 -(void)previous {
@@ -150,7 +163,7 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     self.invocationOnError.target = self;
     self.invocationOnError.selector = @selector(previous);
     
-    [self playMediaWithIndex:_currentItemIndex];
+    [self playCurrentMedia];
 }
 
 -(void)addPeriodicTimeObserverForInterval:(CMTime)interval queue:(dispatch_queue_t)queue usingBlock:(void (^)(CMTime))block {

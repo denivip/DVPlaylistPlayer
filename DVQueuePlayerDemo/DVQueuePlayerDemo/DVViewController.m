@@ -232,7 +232,7 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
     return self.urlArray.count;
 }
 
--(AVPlayerItem *)queuePlayer:(DVQueuePlayer *)queuePlayer playerItemForIndex:(NSUInteger)index {
+-(AVPlayerItem *)queuePlayer:(DVQueuePlayer *)queuePlayer playerItemForIndex:(NSInteger)index {
     AVPlayerItem *item = [[AVPlayerItem alloc] initWithURL:[self.urlArray objectAtIndex:index]];
     return item;
 }
