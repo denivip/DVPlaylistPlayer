@@ -19,6 +19,7 @@ NSString *const DVQueuePlayerPausePlayingEvent = @"DVQueuePlayerPausePlayingEven
 NSString *const DVQueuePlayerStopPlayingEvent = @"DVQueuePlayerStopPlayingEvent";
 NSString *const DVQueuePlayerMovedToNextTrackEvent = @"DVQueuePlayerMovedToNextTrackEvent";
 NSString *const DVQueuePlayerMovedToPreviousTrackEvent = @"DVQueuePlayerMovedToPreviousTrackEvent";
+NSString *const DVQueuePlayerBufferingEvent = @"DVQueuePlayerBufferingEvent";
 NSString *const DVQueuePlayerMuteEvent = @"DVQueuePlayerMuteEvent";
 NSString *const DVQueuePlayerUnmuteEvent = @"DVQueuePlayerUnmuteEvent";
 NSString *const DVQueuePlayerVolumeChangedEvent = @"DVQueuePlayerVolumeChangedEvent";
@@ -30,6 +31,7 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
 @property (nonatomic) float unmuteVolume;
 @property (nonatomic, strong) THObserver *playerItemStatusObserver;
 @property (nonatomic, strong) THObserver *playerRateObserver;
+@property (nonatomic, strong) THObserver *playerItemPlaybackLikelyToKeepUpObserver;
 @property (nonatomic, strong) id playerPeriodicTimeObserver;
 
 @property (nonatomic) CMTime periodicTimeObserverTime;
@@ -94,6 +96,13 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
             default:
                 break;
         }
+    }];
+    
+    self.playerItemPlaybackLikelyToKeepUpObserver = [THObserver observerForObject:playerItem keyPath:@"playbackLikelyToKeepUp" block:^{
+            if (!self.currentItem.playbackLikelyToKeepUp) {
+                [self fireEvent:DVQueuePlayerBufferingEvent];
+                _state = DVQueuePlayerStateBuffering;
+            }
     }];
     
     AVPlayer *player = [AVPlayer playerWithPlayerItem:playerItem];
@@ -239,6 +248,10 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     } else if ([eventType isEqualToString:DVQueuePlayerMovedToPreviousTrackEvent]) {
         if ([self.delegate respondsToSelector:@selector(queuePlayerDidMovedToPrevious:)]) {
             [self.delegate queuePlayerDidMovedToPrevious:self];
+        }
+    } else if ([eventType isEqualToString:DVQueuePlayerBufferingEvent]) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayerBuffering:)]) {
+            [self.delegate queuePlayerBuffering:self];
         }
     } else if ([eventType isEqualToString:DVQueuePlayerMuteEvent]) {
         if ([self.delegate respondsToSelector:@selector(queuePlayerDidMute:)]) {

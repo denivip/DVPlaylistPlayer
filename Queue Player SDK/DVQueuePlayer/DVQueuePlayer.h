@@ -13,6 +13,7 @@
 typedef NS_ENUM(NSUInteger, DVQueuePlayerState) {
     DVQueuePlayerStateStop,
     DVQueuePlayerStatePause,
+    DVQueuePlayerStateBuffering,
     DVQueuePlayerStatePlaying
 };
 
@@ -60,6 +61,7 @@ typedef NS_ENUM(NSUInteger, DVQueuePlayerState) {
 - (void)queuePlayerDidStopPlaying:(DVQueuePlayer *)queuePlayer;
 - (void)queuePlayerDidMovedToNext:(DVQueuePlayer *)queuePlayer;
 - (void)queuePlayerDidMovedToPrevious:(DVQueuePlayer *)queuePlayer;
+- (void)queuePlayerBuffering:(DVQueuePlayer *)queuePlayer;
 - (void)queuePlayerDidMute:(DVQueuePlayer *)queuePlayer;
 - (void)queuePlayerDidUnmute:(DVQueuePlayer *)queuePlayer;
 - (void)queuePlayerDidChangeVolume:(DVQueuePlayer *)queuePlayer;

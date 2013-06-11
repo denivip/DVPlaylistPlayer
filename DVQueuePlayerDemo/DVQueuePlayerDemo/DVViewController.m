@@ -239,6 +239,58 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 
 #pragma mark - Queue player delegate
 
+- (void)queuePlayerDidStartPlaying:(DVQueuePlayer *)queuePlayer {
+    NSLog(@"Started playing");
+    NSInteger index = queuePlayer.currentItemIndex;
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
+    [self.queueTableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionNone];
+}
+
+- (void)queuePlayerDidResumePlaying:(DVQueuePlayer *)queuePlayer {
+    NSLog(@"Resume playing");
+}
+
+- (void)queuePlayerDidPausePlaying:(DVQueuePlayer *)queuePlayer {
+    NSLog(@"Paused");
+}
+
+- (void)queuePlayerDidStopPlaying:(DVQueuePlayer *)queuePlayer {
+    NSLog(@"Stopped playing");
+    
+    [self.queueTableView deselectRowAtIndexPath:self.queueTableView.indexPathForSelectedRow animated:YES];
+}
+
+-(void)queuePlayerDidCompletePlaying:(DVQueuePlayer *)queuePlayer {
+    NSLog(@"Complete playing");
+    
+    [self.queueTableView deselectRowAtIndexPath:self.queueTableView.indexPathForSelectedRow animated:YES];
+}
+
+- (void)queuePlayerDidMovedToNext:(DVQueuePlayer *)queuePlayer {
+    NSLog(@"Playing next");
+}
+
+- (void)queuePlayerDidMovedToPrevious:(DVQueuePlayer *)queuePlayer {
+    NSLog(@"Playing previous");
+}
+
+-(void)queuePlayerBuffering:(DVQueuePlayer *)queuePlayer {
+    NSLog(@"Buffering");
+}
+
+- (void)queuePlayerDidMute:(DVQueuePlayer *)queuePlayer {
+    NSLog(@"Muted");
+}
+
+- (void)queuePlayerDidUnmute:(DVQueuePlayer *)queuePlayer {
+    NSLog(@"Back to sound");
+}
+
+- (void)queuePlayerDidChangeVolume:(DVQueuePlayer *)queuePlayer {
+    NSLog(@"Changed volume to %f", queuePlayer.volume);
+}
+
 
 #pragma mark - UITableView delegate
 
