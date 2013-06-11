@@ -41,6 +41,8 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
 @property (nonatomic) dispatch_queue_t periodicTimeObserverQueue;
 @property (nonatomic, strong) timeObserverBlock periodicTimeObserverBlock;
 
+@property (nonatomic, strong) NSError *error;
+
 @end
 
 @implementation DVQueuePlayer
@@ -215,6 +217,8 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     self.invocationOnError = [NSInvocation invocationWithMethodSignature:[[self class] instanceMethodSignatureForSelector:@selector(next)]];
     self.invocationOnError.target = self;
     self.invocationOnError.selector = @selector(next);
+    [self fireEvent:DVQueuePlayerMovedToNextTrackEvent];
+    
     [self playCurrentMedia];
     
 }
@@ -252,6 +256,8 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     _muted = YES;
     self.unmuteVolume = self.volume;
     [self configureVolume];
+    
+    [self fireEvent:DVQueuePlayerMuteEvent];
 }
 
 - (void)unmute
@@ -263,6 +269,8 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     _muted = NO;
     _volume = self.unmuteVolume;
     [self configureVolume];
+    
+    [self fireEvent:DVQueuePlayerUnmuteEvent];
 }
 
 - (void)setVolume:(float)volume
@@ -274,6 +282,7 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     }
     
     [self configureVolume];
+    [self fireEvent:DVQueuePlayerVolumeChangedEvent];
 }
 
 #pragma mark - Firing events
@@ -294,6 +303,10 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     } else if ([eventType isEqualToString:DVQueuePlayerStopPlayingEvent]) {
         if ([self.delegate respondsToSelector:@selector(queuePlayerDidStopPlaying:)]) {
             [self.delegate queuePlayerDidStopPlaying:self];
+        }
+    } else if ([eventType isEqualToString:DVQueuePlayerCompletePlayingEvent]) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidCompletePlaying:)]) {
+            [self.delegate queuePlayerDidCompletePlaying:self];
         }
     } else if ([eventType isEqualToString:DVQueuePlayerMovedToNextTrackEvent]) {
         if ([self.delegate respondsToSelector:@selector(queuePlayerDidMovedToNext:)]) {
@@ -320,9 +333,11 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
             [self.delegate queuePlayerDidChangeVolume:self];
         }
     } else if ([eventType isEqualToString:DVQueuePlayerErrorEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerFailedToPlay:)]) {
-            [self.delegate queuePlayerFailedToPlay:self];
+        if ([self.delegate respondsToSelector:@selector(queuePlayerFailedToPlay: withError:)]) {
+            [self.delegate queuePlayerFailedToPlay:self withError:self.error];
+            self.error = nil;
         }
+        _state = DVQueuePlayerStateStop;
     }
 }
 

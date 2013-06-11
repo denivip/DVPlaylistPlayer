@@ -54,6 +54,9 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
         _queuePlayer = [[DVQueuePlayer alloc] init];
         _queuePlayer.dataSource = self;
         _queuePlayer.delegate = self;
+//        [_queuePlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:NULL usingBlock:^(CMTime time) {
+//            NSLog(@"Progress time: %f", CMTimeGetSeconds(time));
+//        }];
     }
     
     return _queuePlayer;
@@ -291,6 +294,9 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
     NSLog(@"Changed volume to %f", queuePlayer.volume);
 }
 
+- (void)queuePlayerFailedToPlay:(DVQueuePlayer *)queuePlayer withError:(NSError *)error {
+    NSLog(@"Failed to play with error : %@", error.localizedDescription);
+}
 
 #pragma mark - UITableView delegate
 

@@ -66,6 +66,6 @@ typedef NS_ENUM(NSUInteger, DVQueuePlayerState) {
 - (void)queuePlayerDidMute:(DVQueuePlayer *)queuePlayer;
 - (void)queuePlayerDidUnmute:(DVQueuePlayer *)queuePlayer;
 - (void)queuePlayerDidChangeVolume:(DVQueuePlayer *)queuePlayer;
-- (void)queuePlayerFailedToPlay:(DVQueuePlayer *)queuePlayer;
+- (void)queuePlayerFailedToPlay:(DVQueuePlayer *)queuePlayer withError:(NSError *)error;
 
 @end
