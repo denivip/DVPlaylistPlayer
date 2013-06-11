@@ -167,7 +167,7 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 - (void)playButtonTap
 {
     if (self.queuePlayer.state == DVQueuePlayerStatePlaying) {
-        NSLog(@"Pause");
+        NSLog(@"Plan -> Pause");
         [self.queuePlayer pause];
     } else if (self.queuePlayer.state == DVQueuePlayerStatePause) {
         NSLog(@"Pause -> Resume");

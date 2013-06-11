@@ -28,7 +28,7 @@ typedef NS_ENUM(NSUInteger, DVQueuePlayerState) {
 @property (nonatomic, readonly, strong) UIView *playerView;
 @property (nonatomic) float volume;
 @property (nonatomic, readonly, getter = isMuted) BOOL muted;
-@property (nonatomic) DVQueuePlayerState state;
+@property (nonatomic, readonly) DVQueuePlayerState state;
 @property (nonatomic, readonly) NSInteger currentItemIndex;
 
 - (void)playMediaWithIndex:(NSInteger)index;
@@ -59,6 +59,7 @@ typedef NS_ENUM(NSUInteger, DVQueuePlayerState) {
 - (void)queuePlayerDidResumePlaying:(DVQueuePlayer *)queuePlayer;
 - (void)queuePlayerDidPausePlaying:(DVQueuePlayer *)queuePlayer;
 - (void)queuePlayerDidStopPlaying:(DVQueuePlayer *)queuePlayer;
+- (void)queuePlayerDidCompletePlaying:(DVQueuePlayer *)queuePlayer;
 - (void)queuePlayerDidMovedToNext:(DVQueuePlayer *)queuePlayer;
 - (void)queuePlayerDidMovedToPrevious:(DVQueuePlayer *)queuePlayer;
 - (void)queuePlayerBuffering:(DVQueuePlayer *)queuePlayer;
