@@ -54,9 +54,16 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
         _queuePlayer = [[DVQueuePlayer alloc] init];
         _queuePlayer.dataSource = self;
         _queuePlayer.delegate = self;
-//        [_queuePlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:NULL usingBlock:^(CMTime time) {
-//            NSLog(@"Progress time: %f", CMTimeGetSeconds(time));
-//        }];
+        __weak DVViewController *weakSelf = self;
+        [_queuePlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 10) queue:NULL usingBlock:^(CMTime time) {
+            CMTimeRange seekableRange = kCMTimeRangeInvalid;
+            NSArray *seekableRanges = weakSelf.queuePlayer.currentItem.seekableTimeRanges;
+            if ([seekableRanges count] > 0) {
+                seekableRange = [[seekableRanges objectAtIndex:0] CMTimeRangeValue];
+            }
+         
+            weakSelf.playerInterface.seekBar.progress = CMTimeGetSeconds(time)/CMTimeGetSeconds(seekableRange.duration);
+        }];
     }
     
     return _queuePlayer;
