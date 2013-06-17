@@ -277,11 +277,11 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
     [self.queueTableView deselectRowAtIndexPath:self.queueTableView.indexPathForSelectedRow animated:YES];
 }
 
-- (void)queuePlayerDidMovedToNext:(DVQueuePlayer *)queuePlayer {
+- (void)queuePlayerDidMoveToNext:(DVQueuePlayer *)queuePlayer {
     NSLog(@"Playing next");
 }
 
-- (void)queuePlayerDidMovedToPrevious:(DVQueuePlayer *)queuePlayer {
+- (void)queuePlayerDidMoveToPrevious:(DVQueuePlayer *)queuePlayer {
     NSLog(@"Playing previous");
 }
 
