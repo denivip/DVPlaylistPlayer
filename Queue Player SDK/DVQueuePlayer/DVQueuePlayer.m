@@ -13,19 +13,6 @@
 
 typedef void(^timeObserverBlock)(CMTime time);
 
-NSString *const DVQueuePlayerStartPlayingEvent = @"DVQueuePlayerStartPlayingEvent";
-NSString *const DVQueuePlayerResumePlayingEvent = @"DVQueuePlayerResumePlayingEvent";
-NSString *const DVQueuePlayerPausePlayingEvent = @"DVQueuePlayerPausePlayingEvent";
-NSString *const DVQueuePlayerStopPlayingEvent = @"DVQueuePlayerStopPlayingEvent";
-NSString *const DVQueuePlayerCompletePlayingEvent = @"DVQueuePlayerCompletePlayingEvent";
-NSString *const DVQueuePlayerMovedToNextTrackEvent = @"DVQueuePlayerMovedToNextTrackEvent";
-NSString *const DVQueuePlayerMovedToPreviousTrackEvent = @"DVQueuePlayerMovedToPreviousTrackEvent";
-NSString *const DVQueuePlayerBufferingEvent = @"DVQueuePlayerBufferingEvent";
-NSString *const DVQueuePlayerMuteEvent = @"DVQueuePlayerMuteEvent";
-NSString *const DVQueuePlayerUnmuteEvent = @"DVQueuePlayerUnmuteEvent";
-NSString *const DVQueuePlayerVolumeChangedEvent = @"DVQueuePlayerVolumeChangedEvent";
-NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
-
 @interface DVQueuePlayer()
 
 @property (nonatomic, strong) NSInvocation *invocationOnError;
@@ -63,7 +50,7 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     
     if (!self.dataSource ||
         [self.dataSource numberOfPlayerItems] < 1) {
-        [self fireEvent:DVQueuePlayerErrorEvent];
+        [self triggerError:nil];
         return;
     }
     
@@ -83,7 +70,9 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     
     if (self.currentItem.status == AVPlayerItemStatusReadyToPlay &&
         self.forcedStop) {
-        [self fireEvent:DVQueuePlayerStopPlayingEvent];
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidStopPlaying:)]) {
+            [self.delegate queuePlayerDidStopPlaying:self];
+        }
     }
     
     self.forcedStop = YES;
@@ -99,8 +88,7 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
                 break;
              
             case AVPlayerItemStatusFailed: {
-                self.error = self.currentItem.error;
-                [self fireEvent:DVQueuePlayerErrorEvent];
+                [self triggerError:self.currentItem.error];
                 [self.invocationOnError invoke];
             }
                 break;
@@ -113,7 +101,9 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     
     self.playerItemPlaybackLikelyToKeepUpObserver = [THObserver observerForObject:playerItem keyPath:@"playbackLikelyToKeepUp" block:^{
             if (!self.currentItem.playbackLikelyToKeepUp) {
-                [self fireEvent:DVQueuePlayerBufferingEvent];
+                if ([self.delegate respondsToSelector:@selector(queuePlayerBuffering:)]) {
+                    [self.delegate queuePlayerBuffering:self];
+                }
                 _state = DVQueuePlayerStateBuffering;
             }
     }];
@@ -124,16 +114,22 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     self.playerRateObserver = [THObserver observerForObject:player keyPath:@"rate" block:^{
         if (self.player.rate > 0 && currentlyStartingToPlay) {
             currentlyStartingToPlay = NO;
-            [self fireEvent:DVQueuePlayerStartPlayingEvent];
+            if ([self.delegate respondsToSelector:@selector(queuePlayerDidStartPlaying:)]) {
+                [self.delegate queuePlayerDidStartPlaying:self];
+            }
             _state = DVQueuePlayerStatePlaying;
         }
         else if (self.player.rate > 0) {
-            [self fireEvent:DVQueuePlayerResumePlayingEvent];
+            if ([self.delegate respondsToSelector:@selector(queuePlayerDidResumePlaying:)]) {
+                [self.delegate queuePlayerDidResumePlaying:self];
+            }
             _state = DVQueuePlayerStatePlaying;
         }
         else if (self.player.rate == 0 && !currentlyStartingToPlay &&
                  self.currentItem.playbackLikelyToKeepUp) {
-            [self fireEvent:DVQueuePlayerPausePlayingEvent];
+            if ([self.delegate respondsToSelector:@selector(queuePlayerDidPausePlaying:)]) {
+                [self.delegate queuePlayerDidPausePlaying:self];
+            }
             _state = DVQueuePlayerStatePause;
         }
     }];
@@ -173,8 +169,10 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
 
 - (void)playerItemReachedEnd {
     self.forcedStop = NO;
-    [self fireEvent:DVQueuePlayerCompletePlayingEvent];
-    
+    if ([self.delegate respondsToSelector:@selector(queuePlayerDidCompletePlaying:)]) {
+        [self.delegate queuePlayerDidCompletePlaying:self];
+    }
+
     [self next];
 }
 
@@ -206,8 +204,11 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     
     _state = DVQueuePlayerStateStop;
     
-    if (self.forcedStop)
-        [self fireEvent:DVQueuePlayerStopPlayingEvent];
+    if (self.forcedStop) {
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidStopPlaying:)]) {
+            [self.delegate queuePlayerDidStopPlaying:self];
+        }
+    }
     self.forcedStop = NO;
 }
 
@@ -217,7 +218,9 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     self.invocationOnError = [NSInvocation invocationWithMethodSignature:[[self class] instanceMethodSignatureForSelector:@selector(next)]];
     self.invocationOnError.target = self;
     self.invocationOnError.selector = @selector(next);
-    [self fireEvent:DVQueuePlayerMovedToNextTrackEvent];
+    if ([self.delegate respondsToSelector:@selector(queuePlayerDidMoveToNext:)]) {
+        [self.delegate queuePlayerDidMoveToNext:self];
+    }
     
     [self playCurrentMedia];
     
@@ -257,7 +260,9 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     self.unmuteVolume = self.volume;
     [self configureVolume];
     
-    [self fireEvent:DVQueuePlayerMuteEvent];
+    if ([self.delegate respondsToSelector:@selector(queuePlayerDidMute:)]) {
+        [self.delegate queuePlayerDidMute:self];
+    }
 }
 
 - (void)unmute
@@ -270,7 +275,9 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     _volume = self.unmuteVolume;
     [self configureVolume];
     
-    [self fireEvent:DVQueuePlayerUnmuteEvent];
+    if ([self.delegate respondsToSelector:@selector(queuePlayerDidUnmute:)]) {
+        [self.delegate queuePlayerDidUnmute:self];
+    }
 }
 
 - (void)setVolume:(float)volume
@@ -282,62 +289,19 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
     }
     
     [self configureVolume];
-    [self fireEvent:DVQueuePlayerVolumeChangedEvent];
+    if ([self.delegate respondsToSelector:@selector(queuePlayerDidChangeVolume:)]) {
+        [self.delegate queuePlayerDidChangeVolume:self];
+    }
 }
 
 #pragma mark - Firing events
 
-- (void)fireEvent:(NSString *)eventType {
-    if ([eventType isEqualToString:DVQueuePlayerStartPlayingEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerDidStartPlaying:)]) {
-            [self.delegate queuePlayerDidStartPlaying:self];
-        }
-    } else if ([eventType isEqualToString:DVQueuePlayerPausePlayingEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerDidPausePlaying:)]) {
-            [self.delegate queuePlayerDidPausePlaying:self];
-        }
-    } else if ([eventType isEqualToString:DVQueuePlayerResumePlayingEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerDidResumePlaying:)]) {
-            [self.delegate queuePlayerDidResumePlaying:self];
-        }
-    } else if ([eventType isEqualToString:DVQueuePlayerStopPlayingEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerDidStopPlaying:)]) {
-            [self.delegate queuePlayerDidStopPlaying:self];
-        }
-    } else if ([eventType isEqualToString:DVQueuePlayerCompletePlayingEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerDidCompletePlaying:)]) {
-            [self.delegate queuePlayerDidCompletePlaying:self];
-        }
-    } else if ([eventType isEqualToString:DVQueuePlayerMovedToNextTrackEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerDidMoveToNext:)]) {
-            [self.delegate queuePlayerDidMoveToNext:self];
-        }
-    } else if ([eventType isEqualToString:DVQueuePlayerMovedToPreviousTrackEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerDidMoveToPrevious:)]) {
-            [self.delegate queuePlayerDidMoveToPrevious:self];
-        }
-    } else if ([eventType isEqualToString:DVQueuePlayerBufferingEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerBuffering:)]) {
-            [self.delegate queuePlayerBuffering:self];
-        }
-    } else if ([eventType isEqualToString:DVQueuePlayerMuteEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerDidMute:)]) {
-            [self.delegate queuePlayerDidMute:self];
-        }
-    } else if ([eventType isEqualToString:DVQueuePlayerUnmuteEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerDidUnmute:)]) {
-            [self.delegate queuePlayerDidUnmute:self];
-        }
-    } else if ([eventType isEqualToString:DVQueuePlayerVolumeChangedEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerDidChangeVolume:)]) {
-            [self.delegate queuePlayerDidChangeVolume:self];
-        }
-    } else if ([eventType isEqualToString:DVQueuePlayerErrorEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerFailedToPlay: withError:)]) {
-            [self.delegate queuePlayerFailedToPlay:self withError:self.error];
-            self.error = nil;
-        }
-        _state = DVQueuePlayerStateStop;
+- (void)triggerError:(NSError *)error
+{
+    self.error = error;
+    _state = DVQueuePlayerStateStop;
+    if ([self.delegate respondsToSelector:@selector(queuePlayerFailedToPlay:withError:)]) {
+        [self.delegate queuePlayerFailedToPlay:self withError:error];
     }
 }
 
