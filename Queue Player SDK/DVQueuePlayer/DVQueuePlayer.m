@@ -309,12 +309,12 @@ NSString *const DVQueuePlayerErrorEvent = @"DVQueuePlayerErrorEvent";
             [self.delegate queuePlayerDidCompletePlaying:self];
         }
     } else if ([eventType isEqualToString:DVQueuePlayerMovedToNextTrackEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerDidMovedToNext:)]) {
-            [self.delegate queuePlayerDidMovedToNext:self];
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidMoveToNext:)]) {
+            [self.delegate queuePlayerDidMoveToNext:self];
         }
     } else if ([eventType isEqualToString:DVQueuePlayerMovedToPreviousTrackEvent]) {
-        if ([self.delegate respondsToSelector:@selector(queuePlayerDidMovedToPrevious:)]) {
-            [self.delegate queuePlayerDidMovedToPrevious:self];
+        if ([self.delegate respondsToSelector:@selector(queuePlayerDidMoveToPrevious:)]) {
+            [self.delegate queuePlayerDidMoveToPrevious:self];
         }
     } else if ([eventType isEqualToString:DVQueuePlayerBufferingEvent]) {
         if ([self.delegate respondsToSelector:@selector(queuePlayerBuffering:)]) {
