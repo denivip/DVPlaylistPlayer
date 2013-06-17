@@ -32,6 +32,10 @@
 		74E17CB31765E9DD00F62507 /* volume.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CAD1765E9DD00F62507 /* volume.png */; };
 		74E17CB41765E9DD00F62507 /* volume@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CAE1765E9DD00F62507 /* volume@2x.png */; };
 		74E17CB61765ED9B00F62507 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17CB51765ED9B00F62507 /* QuartzCore.framework */; };
+		E35F8351176F077F007DA6A5 /* DVAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = E35F834C176F077F007DA6A5 /* DVAudioSession.m */; };
+		E35F8352176F077F007DA6A5 /* DVQueuePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E35F834E176F077F007DA6A5 /* DVQueuePlayer.m */; };
+		E35F8353176F077F007DA6A5 /* DVQueuePlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E35F8350176F077F007DA6A5 /* DVQueuePlayerView.m */; };
+		E35F835D176F07E9007DA6A5 /* THObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = E35F8359176F07E9007DA6A5 /* THObserver.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +72,14 @@
 		74E17CAD1765E9DD00F62507 /* volume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = volume.png; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/volume.png"; sourceTree = "<group>"; };
 		74E17CAE1765E9DD00F62507 /* volume@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "volume@2x.png"; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/volume@2x.png"; sourceTree = "<group>"; };
 		74E17CB51765ED9B00F62507 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		E35F834B176F077F007DA6A5 /* DVAudioSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DVAudioSession.h; path = "../Queue Player SDK/DVQueuePlayer/DVAudioSession.h"; sourceTree = "<group>"; };
+		E35F834C176F077F007DA6A5 /* DVAudioSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DVAudioSession.m; path = "../Queue Player SDK/DVQueuePlayer/DVAudioSession.m"; sourceTree = "<group>"; };
+		E35F834D176F077F007DA6A5 /* DVQueuePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DVQueuePlayer.h; path = "../Queue Player SDK/DVQueuePlayer/DVQueuePlayer.h"; sourceTree = "<group>"; };
+		E35F834E176F077F007DA6A5 /* DVQueuePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DVQueuePlayer.m; path = "../Queue Player SDK/DVQueuePlayer/DVQueuePlayer.m"; sourceTree = "<group>"; };
+		E35F834F176F077F007DA6A5 /* DVQueuePlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DVQueuePlayerView.h; path = "../Queue Player SDK/DVQueuePlayer/DVQueuePlayerView.h"; sourceTree = "<group>"; };
+		E35F8350176F077F007DA6A5 /* DVQueuePlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DVQueuePlayerView.m; path = "../Queue Player SDK/DVQueuePlayer/DVQueuePlayerView.m"; sourceTree = "<group>"; };
+		E35F8358176F07E9007DA6A5 /* THObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THObserver.h; sourceTree = "<group>"; };
+		E35F8359176F07E9007DA6A5 /* THObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THObserver.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +166,8 @@
 		74E17C741761D2EF00F62507 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				E35F8355176F07E9007DA6A5 /* THObserversAndBinders */,
+				E35F834A176F076D007DA6A5 /* DVQueuePlayer */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -182,6 +196,29 @@
 				74E17CAE1765E9DD00F62507 /* volume@2x.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		E35F834A176F076D007DA6A5 /* DVQueuePlayer */ = {
+			isa = PBXGroup;
+			children = (
+				E35F834B176F077F007DA6A5 /* DVAudioSession.h */,
+				E35F834C176F077F007DA6A5 /* DVAudioSession.m */,
+				E35F834D176F077F007DA6A5 /* DVQueuePlayer.h */,
+				E35F834E176F077F007DA6A5 /* DVQueuePlayer.m */,
+				E35F834F176F077F007DA6A5 /* DVQueuePlayerView.h */,
+				E35F8350176F077F007DA6A5 /* DVQueuePlayerView.m */,
+			);
+			name = DVQueuePlayer;
+			sourceTree = "<group>";
+		};
+		E35F8355176F07E9007DA6A5 /* THObserversAndBinders */ = {
+			isa = PBXGroup;
+			children = (
+				E35F8358176F07E9007DA6A5 /* THObserver.h */,
+				E35F8359176F07E9007DA6A5 /* THObserver.m */,
+			);
+			name = THObserversAndBinders;
+			path = ../THObservers/THObserversAndBinders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,7 +299,11 @@
 				74E17C691761D28200F62507 /* DVViewController.m in Sources */,
 				74E17CA01765E62900F62507 /* DVPlayerUIView.m in Sources */,
 				74E17CA41765E6FE00F62507 /* DVPlayerSeekBar.m in Sources */,
+				E35F8353176F077F007DA6A5 /* DVQueuePlayerView.m in Sources */,
+				E35F835D176F07E9007DA6A5 /* THObserver.m in Sources */,
 				74E17CA71765E74900F62507 /* DVPlayerVolumeBar.m in Sources */,
+				E35F8352176F077F007DA6A5 /* DVQueuePlayer.m in Sources */,
+				E35F8351176F077F007DA6A5 /* DVAudioSession.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

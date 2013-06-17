@@ -9,6 +9,7 @@
 #import "DVViewController.h"
 #import "DVPlayerUIView.h"
 #import <AVFoundation/AVFoundation.h>
+#import "DVQueuePlayer.h"
 
 NSString *const urlString1 = @"http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
 NSString *const urlString2 = @"http://stream.alayam.com/alayam/alayam/playlist.m3u8";
@@ -16,7 +17,7 @@ NSString *const urlString3 = @"http://www.nasa.gov/multimedia/nasatv/NTV-Public-
 NSString *const urlString4 = @"http://iphone-streaming.ustream.tv/ustreamVideo/1524/streams/live/playlist.m3u8";
 NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/AL_ESP2_UK_ENG/playlist_400.m3u8";
 
-@interface DVViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate>
+@interface DVViewController () <UITableViewDataSource, UITableViewDelegate, UITextViewDelegate, DVQueuePlayerDataSource, DVQueuePlayerDelegate>
 @property (nonatomic, strong) DVQueuePlayer *queuePlayer;
 @property (nonatomic, strong) NSArray *urlArray;
 @property (nonatomic, strong) NSArray *arrayOfNames;
