@@ -129,8 +129,7 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
     CGFloat interfaceHeight = 100.f;
     CGSize halfSize = CGSizeMake(self.view.bounds.size.width/2.f,
                                  self.view.bounds.size.height/2.f);
-    self.playerInterface.interfaceOrientation = self.interfaceOrientation;
-    
+
     if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
         self.queuePlayer.playerView.frame = CGRectMake(0,
                                                        0,

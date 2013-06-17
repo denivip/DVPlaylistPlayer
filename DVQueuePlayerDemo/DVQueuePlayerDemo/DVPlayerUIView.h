@@ -12,8 +12,6 @@
 
 @interface DVPlayerUIView : UIView
 
-@property (nonatomic) UIInterfaceOrientation interfaceOrientation;
-
 @property (nonatomic, strong) UIButton *playButton;
 @property (nonatomic, strong) UIButton *stopButton;
 @property (nonatomic, strong) UIButton *prevButton;
