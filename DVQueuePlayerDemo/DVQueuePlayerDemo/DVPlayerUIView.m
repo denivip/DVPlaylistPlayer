@@ -271,35 +271,6 @@
                         forState:UIControlStateNormal];
 }
 
--(void)setPlayingAD:(BOOL)playingAD
-{
-    _playingAD = playingAD;
-    
-    if (playingAD) {
-        self.prevButton.enabled = NO;
-        self.prevButton.alpha = .7f;
-        
-        self.nextButton.enabled = NO;
-        self.nextButton.alpha = .7f;
-        
-        self.seekBar.enabled = NO;
-        
-        self.elapsedButton.userInteractionEnabled = NO;
-        self.durationButton.userInteractionEnabled = NO;
-    } else {
-        self.prevButton.enabled = YES;
-        self.prevButton.alpha = 1.f;
-        
-        self.nextButton.enabled = YES;
-        self.nextButton.alpha = 1.f;
-        
-        self.seekBar.enabled = YES;
-        
-        self.elapsedButton.userInteractionEnabled = YES;
-        self.durationButton.userInteractionEnabled = YES;
-    }
-}
-
 -(void)setVolume:(CGFloat)volume
 {
     _volume = MIN(MAX(0.f, volume), 1.f);

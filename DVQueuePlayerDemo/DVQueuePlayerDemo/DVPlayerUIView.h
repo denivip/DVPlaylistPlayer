@@ -26,6 +26,4 @@
 @property (nonatomic) NSTimeInterval duration;
 @property (nonatomic) CGFloat volume;
 
-@property (nonatomic) BOOL playingAD;
-
 @end
