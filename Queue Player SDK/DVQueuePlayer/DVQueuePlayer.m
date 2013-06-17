@@ -11,7 +11,7 @@
 #import "DVQueuePlayerView.h"
 #import "THObserver.h"
 
-typedef void(^timeObserverBlock)(CMTime time);
+typedef void (^TimeObserverBlock)(CMTime time);
 
 @interface DVQueuePlayer()
 
@@ -26,7 +26,7 @@ typedef void(^timeObserverBlock)(CMTime time);
 
 @property (nonatomic) CMTime periodicTimeObserverTime;
 @property (nonatomic) dispatch_queue_t periodicTimeObserverQueue;
-@property (nonatomic, strong) timeObserverBlock periodicTimeObserverBlock;
+@property (nonatomic, strong) TimeObserverBlock periodicTimeObserverBlock;
 
 @property (nonatomic, strong) NSError *error;
 
