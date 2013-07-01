@@ -12,7 +12,7 @@ This player takes it's tracks from data source like UITableView.
  - AudioToolbox
 
 ##Adding DVPlaylistPlayer to your project##
-#CocoaPods#
+###CocoaPods###
 The easiest way to add our playlist player to your project is to use CocoaPods.
 If you don't have CocoaPods installed on your system, then we suggest you to check cocoapods.org for further information.
 All you need to do to install DVPlaylistPlayer is to create file named 'Podfile' right in your project.xcodeproj file 
@@ -27,13 +27,13 @@ and DVPlaylistPlayer will be automatically downloaded and installed to your proj
 player will also be added automatically.
 Just don't forget to use Workspace file instead of *.xcodeproj from now!
 
-#Source files#
+###Source files###
 The other way is to add source files to your project directly by copying them. Here is the algorithm.
  - Clone this repository or download zip archive with SDK.
  - Open your project in XCode and drag-and-drop all files from directory 'DVPlaylistPlayer' to your project.
  - import class DVPlaylistPlayer.h to any implementation or header file where you want to use it.
  
-#Framework#
+###Framework###
 Also you can include DVPlaylistPlayer as a framework.
  - Clone the repository or download zip archive with SDK.
  - Under directory 'Playlist Player SDK' find and open the project 'PlaylistPlayerSDK.xcodeproj' in XCode.
