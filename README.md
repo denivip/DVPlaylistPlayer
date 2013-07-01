@@ -22,7 +22,7 @@ directory. Then you need to add next two lines:
 `pod 'DVPlaylistPlayer', :git=>'https://github.com/denivip/DVPlaylistPlayer'`
 
 Then you enter magic words to your console:
-pod install
+`pod install`
 
 and DVPlaylistPlayer will be automatically downloaded and installed to your project. All the frameworks required for 
 player will also be added automatically.
