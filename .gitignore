@@ -2,3 +2,5 @@ xcuserdata
 Queue Player SDK/Queue Player SDK.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 DVQueuePlayerDemo/DVQueuePlayerDemo.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 QueuePlayerSDK.xcworkspace/contents.xcworkspacedata
+Queue Player SDK/Products/DVQueuePlayer.framework/Versions/A/DVQueuePlayer
+Queue Player SDK/Products/DVQueuePlayer.framework/Versions/A/Headers/DVQueuePlayer.h
