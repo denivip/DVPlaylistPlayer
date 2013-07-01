@@ -8,7 +8,7 @@
 #
 Pod::Spec.new do |s|
   s.name         = "DVPlaylistPlayer"
-  s.version      = "0.1"
+  s.version      = "0.5.0"
   s.summary      = "A short description of DVPlaylistPlayer."
   # s.description  = <<-DESC
   #                   An optional longer description of DVPlaylistPlayer
@@ -16,11 +16,11 @@ Pod::Spec.new do |s|
   #                   * Markdown format.
   #                   * Don't worry about the indent, we strip it!
   #                  DESC
-  s.homepage     = "http://EXAMPLE/DVPlaylistPlayer"
+  s.homepage     = "https://github.com/denivip/DVPlaylistPlayer"
 
   # Specify the license type. CocoaPods detects automatically the license file if it is named
   # `LICENSE*.*', however if the name is different, specify it.
-  s.license      = 'MIT (example)'
+  # s.license      = 'MIT (example)'
   # s.license      = { :type => 'MIT (example)', :file => 'FILE_LICENSE' }
   #
   # Only if no dedicated file is available include the full text of the license.
@@ -49,7 +49,7 @@ Pod::Spec.new do |s|
 
   # Specify the location from where the source should be retrieved.
   #
-  s.source       = { :git => "https://github.com/denivip/DVPlaylistPlayer", :commit => "3640c9cc5e" }
+  s.source       = { :git => "https://github.com/denivip/DVPlaylistPlayer"}
   # s.source       = { :svn => 'http://EXAMPLE/DVPlaylistPlayer/tags/1.0.0' }
   # s.source       = { :hg  => 'http://EXAMPLE/DVPlaylistPlayer', :revision => '1.0.0' }
 
@@ -75,7 +75,7 @@ Pod::Spec.new do |s|
   # over the selected files.
   # (See http://rake.rubyforge.org/classes/Rake/FileList.html.)
   #
-  s.source_files = 'Queue Player SDK/DVQueuePlayer'
+  s.source_files = 'Playlist Player SDK/DVPlaylistPlayer'
 
   # A list of file patterns which select the header files that should be
   # made available to the application. If the pattern is a directory then the
