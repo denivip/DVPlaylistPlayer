@@ -291,14 +291,21 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 
 - (void)queuePlayerDidMute:(DVQueuePlayer *)queuePlayer {
     NSLog(@"Muted");
+    self.playerInterface.muteButton.selected = YES;
+    [self.playerInterface.volumeBar mute];
 }
 
 - (void)queuePlayerDidUnmute:(DVQueuePlayer *)queuePlayer {
     NSLog(@"Back to sound");
+    self.playerInterface.muteButton.selected = NO;
+    [self.playerInterface.volumeBar unmute];
 }
 
 - (void)queuePlayerDidChangeVolume:(DVQueuePlayer *)queuePlayer {
     NSLog(@"Changed volume to %f", queuePlayer.volume);
+    if (!self.playerInterface.volumeBar.isMuted) {
+        self.playerInterface.muteButton.selected = NO;
+    }
 }
 
 - (void)queuePlayerFailedToPlay:(DVQueuePlayer *)queuePlayer withError:(NSError *)error {

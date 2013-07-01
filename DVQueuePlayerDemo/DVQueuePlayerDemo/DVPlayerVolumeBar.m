@@ -13,6 +13,7 @@
 
 @property (nonatomic, strong) CALayer *backgroundLayer;
 @property (nonatomic, strong) CALayer *volumeLayer;
+@property (nonatomic) float volumeBeforeMute;
 
 @end
 
@@ -74,6 +75,25 @@
                               self.volume*self.backgroundLayer.bounds.size.width,
                               self.backgroundLayer.bounds.size.height);
     self.volumeLayer.frame = frame;
+    
+    if (_volume && self.volumeBeforeMute) {
+        self.volumeBeforeMute = 0.f;
+        _isMuted = NO;
+    }
+}
+
+- (void)mute {
+    self.volumeBeforeMute = self.volume;
+    self.volume = 0.f;
+    
+    _isMuted = YES;
+}
+
+- (void)unmute {
+    self.volume = self.volumeBeforeMute;
+    self.volumeBeforeMute = 0.f;
+    
+    _isMuted = NO;
 }
 
 #pragma mark - Positioning and Layout

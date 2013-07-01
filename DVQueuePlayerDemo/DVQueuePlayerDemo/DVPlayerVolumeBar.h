@@ -11,5 +11,9 @@
 @interface DVPlayerVolumeBar : UIControl
 
 @property (nonatomic) CGFloat volume; //0...1
+@property (nonatomic, readonly) BOOL isMuted;
+
+- (void)mute;
+- (void)unmute;
 
 @end
