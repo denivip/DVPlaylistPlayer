@@ -63,14 +63,19 @@
 
 -(void)setProgress:(CGFloat)progress
 {
-    _progress = MIN(MAX(0.f, progress), 1.f);
+    if (progress != progress) {
+        _progress = 0;
+    } else {
+        if (progress < 0.02f)
+            _progress = 0.f;
+        else if (progress > 0.98f)
+            _progress = 1.f;
+        else
+            _progress = MIN(MAX(0.f, progress), 1.f);
+    }
     
-    if (progress < 0.02f)
-        _progress = 0.f;
-    else if (progress > 0.98f)
-        _progress = 1.f;
     
-    CGFloat length = progress*self.bounds.size.width;
+    CGFloat length = _progress*self.bounds.size.width;
     CGRect frame = self.progressLayer.frame;
     frame.size.width = length;
     
