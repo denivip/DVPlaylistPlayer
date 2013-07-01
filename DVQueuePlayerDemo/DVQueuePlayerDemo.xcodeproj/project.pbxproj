@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		746D0E4617814C0400CA1872 /* noVolume.png in Resources */ = {isa = PBXBuildFile; fileRef = 746D0E4017814C0400CA1872 /* noVolume.png */; };
+		746D0E4717814C0400CA1872 /* noVolume@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 746D0E4117814C0400CA1872 /* noVolume@2x.png */; };
+		746D0E4A17814C0400CA1872 /* volume.png in Resources */ = {isa = PBXBuildFile; fileRef = 746D0E4417814C0400CA1872 /* volume.png */; };
+		746D0E4B17814C0400CA1872 /* volume@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 746D0E4517814C0400CA1872 /* volume@2x.png */; };
 		74E17C501761D28200F62507 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17C4F1761D28200F62507 /* UIKit.framework */; };
 		74E17C521761D28200F62507 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17C511761D28200F62507 /* Foundation.framework */; };
 		74E17C541761D28200F62507 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17C531761D28200F62507 /* CoreGraphics.framework */; };
@@ -25,12 +29,6 @@
 		74E17CA01765E62900F62507 /* DVPlayerUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E17C9F1765E62900F62507 /* DVPlayerUIView.m */; };
 		74E17CA41765E6FE00F62507 /* DVPlayerSeekBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E17CA31765E6FE00F62507 /* DVPlayerSeekBar.m */; };
 		74E17CA71765E74900F62507 /* DVPlayerVolumeBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E17CA61765E74900F62507 /* DVPlayerVolumeBar.m */; };
-		74E17CAF1765E9DD00F62507 /* noVolume.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CA91765E9DD00F62507 /* noVolume.png */; };
-		74E17CB01765E9DD00F62507 /* noVolume@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CAA1765E9DD00F62507 /* noVolume@2x.png */; };
-		74E17CB11765E9DD00F62507 /* scrollDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CAB1765E9DD00F62507 /* scrollDown.png */; };
-		74E17CB21765E9DD00F62507 /* scrollDown@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CAC1765E9DD00F62507 /* scrollDown@2x.png */; };
-		74E17CB31765E9DD00F62507 /* volume.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CAD1765E9DD00F62507 /* volume.png */; };
-		74E17CB41765E9DD00F62507 /* volume@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74E17CAE1765E9DD00F62507 /* volume@2x.png */; };
 		74E17CB61765ED9B00F62507 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17CB51765ED9B00F62507 /* QuartzCore.framework */; };
 		E35F8351176F077F007DA6A5 /* DVAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = E35F834C176F077F007DA6A5 /* DVAudioSession.m */; };
 		E35F8352176F077F007DA6A5 /* DVQueuePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E35F834E176F077F007DA6A5 /* DVQueuePlayer.m */; };
@@ -39,6 +37,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		746D0E4017814C0400CA1872 /* noVolume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noVolume.png; sourceTree = "<group>"; };
+		746D0E4117814C0400CA1872 /* noVolume@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noVolume@2x.png"; sourceTree = "<group>"; };
+		746D0E4417814C0400CA1872 /* volume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volume.png; sourceTree = "<group>"; };
+		746D0E4517814C0400CA1872 /* volume@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "volume@2x.png"; sourceTree = "<group>"; };
 		74E17C4C1761D28200F62507 /* DVQueuePlayerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DVQueuePlayerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74E17C4F1761D28200F62507 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		74E17C511761D28200F62507 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,12 +67,6 @@
 		74E17CA31765E6FE00F62507 /* DVPlayerSeekBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVPlayerSeekBar.m; sourceTree = "<group>"; };
 		74E17CA51765E74900F62507 /* DVPlayerVolumeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVPlayerVolumeBar.h; sourceTree = "<group>"; };
 		74E17CA61765E74900F62507 /* DVPlayerVolumeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVPlayerVolumeBar.m; sourceTree = "<group>"; };
-		74E17CA91765E9DD00F62507 /* noVolume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = noVolume.png; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/noVolume.png"; sourceTree = "<group>"; };
-		74E17CAA1765E9DD00F62507 /* noVolume@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "noVolume@2x.png"; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/noVolume@2x.png"; sourceTree = "<group>"; };
-		74E17CAB1765E9DD00F62507 /* scrollDown.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = scrollDown.png; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/scrollDown.png"; sourceTree = "<group>"; };
-		74E17CAC1765E9DD00F62507 /* scrollDown@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "scrollDown@2x.png"; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/scrollDown@2x.png"; sourceTree = "<group>"; };
-		74E17CAD1765E9DD00F62507 /* volume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = volume.png; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/volume.png"; sourceTree = "<group>"; };
-		74E17CAE1765E9DD00F62507 /* volume@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "volume@2x.png"; path = "../../../../movideo/Movideo Sample/Movideo Sample/images/volume@2x.png"; sourceTree = "<group>"; };
 		74E17CB51765ED9B00F62507 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E35F834B176F077F007DA6A5 /* DVAudioSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DVAudioSession.h; path = "../Queue Player SDK/DVQueuePlayer/DVAudioSession.h"; sourceTree = "<group>"; };
 		E35F834C176F077F007DA6A5 /* DVAudioSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DVAudioSession.m; path = "../Queue Player SDK/DVQueuePlayer/DVAudioSession.m"; sourceTree = "<group>"; };
@@ -101,6 +97,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		746D0E3F17814C0400CA1872 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				746D0E4017814C0400CA1872 /* noVolume.png */,
+				746D0E4117814C0400CA1872 /* noVolume@2x.png */,
+				746D0E4417814C0400CA1872 /* volume.png */,
+				746D0E4517814C0400CA1872 /* volume@2x.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
 		74E17C431761D28200F62507 = {
 			isa = PBXGroup;
 			children = (
@@ -137,7 +144,7 @@
 		74E17C551761D28200F62507 /* DVQueuePlayerDemo */ = {
 			isa = PBXGroup;
 			children = (
-				74E17CA81765E9C500F62507 /* images */,
+				746D0E3F17814C0400CA1872 /* images */,
 				74E17CA11765E6E900F62507 /* PlayerInterface */,
 				74E17C5E1761D28200F62507 /* DVAppDelegate.h */,
 				74E17C5F1761D28200F62507 /* DVAppDelegate.m */,
@@ -183,19 +190,6 @@
 				74E17CA61765E74900F62507 /* DVPlayerVolumeBar.m */,
 			);
 			name = PlayerInterface;
-			sourceTree = "<group>";
-		};
-		74E17CA81765E9C500F62507 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				74E17CA91765E9DD00F62507 /* noVolume.png */,
-				74E17CAA1765E9DD00F62507 /* noVolume@2x.png */,
-				74E17CAB1765E9DD00F62507 /* scrollDown.png */,
-				74E17CAC1765E9DD00F62507 /* scrollDown@2x.png */,
-				74E17CAD1765E9DD00F62507 /* volume.png */,
-				74E17CAE1765E9DD00F62507 /* volume@2x.png */,
-			);
-			name = images;
 			sourceTree = "<group>";
 		};
 		E35F834A176F076D007DA6A5 /* DVQueuePlayer */ = {
@@ -278,12 +272,10 @@
 				74E17C641761D28200F62507 /* Default@2x.png in Resources */,
 				74E17C661761D28200F62507 /* Default-568h@2x.png in Resources */,
 				74E17C6C1761D28200F62507 /* DVViewController.xib in Resources */,
-				74E17CAF1765E9DD00F62507 /* noVolume.png in Resources */,
-				74E17CB01765E9DD00F62507 /* noVolume@2x.png in Resources */,
-				74E17CB11765E9DD00F62507 /* scrollDown.png in Resources */,
-				74E17CB21765E9DD00F62507 /* scrollDown@2x.png in Resources */,
-				74E17CB31765E9DD00F62507 /* volume.png in Resources */,
-				74E17CB41765E9DD00F62507 /* volume@2x.png in Resources */,
+				746D0E4617814C0400CA1872 /* noVolume.png in Resources */,
+				746D0E4717814C0400CA1872 /* noVolume@2x.png in Resources */,
+				746D0E4A17814C0400CA1872 /* volume.png in Resources */,
+				746D0E4B17814C0400CA1872 /* volume@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +434,7 @@
 				74E17C711761D28200F62507 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
