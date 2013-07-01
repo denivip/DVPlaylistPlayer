@@ -1,0 +1,6 @@
+//
+// Prefix header for all source files of the 'DVPlaylistPlayer' target in the 'DVPlaylistPlayer' project
+//
+
+#ifdef __OBJC__
+#endif
