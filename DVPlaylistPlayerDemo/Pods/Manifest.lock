@@ -1,0 +1,17 @@
+PODS:
+  - DVPlaylistPlayer (0.5.0):
+    - THObserversAndBinders
+  - THObserversAndBinders (1.0.0)
+
+DEPENDENCIES:
+  - DVPlaylistPlayer (from `https://github.com/denivip/DVPlaylistPlayer`)
+
+EXTERNAL SOURCES:
+  DVPlaylistPlayer:
+    :git: https://github.com/denivip/DVPlaylistPlayer
+
+SPEC CHECKSUMS:
+  DVPlaylistPlayer: b10ffc5a9dd5bbd71d045693924aa66fbacd91d1
+  THObserversAndBinders: 5f0e709e8b704a8646ffdee9beb01a8aefc1dcb2
+
+COCOAPODS: 0.20.2

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		74528CD91781991800E55934 /* DVPlaylistPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74528CD81781991800E55934 /* DVPlaylistPlayer.framework */; };
+		2183556E92404C72A075A81A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1132B218CDE14A62843449E2 /* libPods.a */; };
 		746D0E4617814C0400CA1872 /* noVolume.png in Resources */ = {isa = PBXBuildFile; fileRef = 746D0E4017814C0400CA1872 /* noVolume.png */; };
 		746D0E4717814C0400CA1872 /* noVolume@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 746D0E4117814C0400CA1872 /* noVolume@2x.png */; };
 		746D0E4A17814C0400CA1872 /* volume.png in Resources */ = {isa = PBXBuildFile; fileRef = 746D0E4417814C0400CA1872 /* volume.png */; };
@@ -34,7 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		74528CD81781991800E55934 /* DVPlaylistPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVPlaylistPlayer.framework; path = "../Playlist Player SDK/Products/DVPlaylistPlayer.framework"; sourceTree = "<group>"; };
+		1132B218CDE14A62843449E2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		658E30166ECD4C2A890ABA7B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 		746D0E4017814C0400CA1872 /* noVolume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noVolume.png; sourceTree = "<group>"; };
 		746D0E4117814C0400CA1872 /* noVolume@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "noVolume@2x.png"; sourceTree = "<group>"; };
 		746D0E4417814C0400CA1872 /* volume.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volume.png; sourceTree = "<group>"; };
@@ -66,8 +67,6 @@
 		74E17CA51765E74900F62507 /* DVPlayerVolumeBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVPlayerVolumeBar.h; sourceTree = "<group>"; };
 		74E17CA61765E74900F62507 /* DVPlayerVolumeBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVPlayerVolumeBar.m; sourceTree = "<group>"; };
 		74E17CB51765ED9B00F62507 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		E35F8358176F07E9007DA6A5 /* THObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THObserver.h; sourceTree = "<group>"; };
-		E35F8359176F07E9007DA6A5 /* THObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THObserver.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +82,7 @@
 				74E17C501761D28200F62507 /* UIKit.framework in Frameworks */,
 				74E17C521761D28200F62507 /* Foundation.framework in Frameworks */,
 				74E17C541761D28200F62507 /* CoreGraphics.framework in Frameworks */,
-				74528CD91781991800E55934 /* DVPlaylistPlayer.framework in Frameworks */,
+				2183556E92404C72A075A81A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,8 +105,8 @@
 			children = (
 				74E17C551761D28200F62507 /* DVPlaylistPlayerDemo */,
 				74E17C4E1761D28200F62507 /* Frameworks */,
-				74E17C741761D2EF00F62507 /* Vendor */,
 				74E17C4D1761D28200F62507 /* Products */,
+				658E30166ECD4C2A890ABA7B /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +129,7 @@
 				74E17C4F1761D28200F62507 /* UIKit.framework */,
 				74E17C511761D28200F62507 /* Foundation.framework */,
 				74E17C531761D28200F62507 /* CoreGraphics.framework */,
+				1132B218CDE14A62843449E2 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -163,15 +163,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		74E17C741761D2EF00F62507 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				74528CD81781991800E55934 /* DVPlaylistPlayer.framework */,
-				E35F8355176F07E9007DA6A5 /* THObserversAndBinders */,
-			);
-			name = Vendor;
-			sourceTree = "<group>";
-		};
 		74E17CA11765E6E900F62507 /* PlayerInterface */ = {
 			isa = PBXGroup;
 			children = (
@@ -185,16 +176,6 @@
 			name = PlayerInterface;
 			sourceTree = "<group>";
 		};
-		E35F8355176F07E9007DA6A5 /* THObserversAndBinders */ = {
-			isa = PBXGroup;
-			children = (
-				E35F8358176F07E9007DA6A5 /* THObserver.h */,
-				E35F8359176F07E9007DA6A5 /* THObserver.m */,
-			);
-			name = THObserversAndBinders;
-			path = ../THObservers/THObserversAndBinders;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -202,9 +183,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 74E17C6F1761D28200F62507 /* Build configuration list for PBXNativeTarget "DVPlaylistPlayerDemo" */;
 			buildPhases = (
+				4C838F5610CE4924AE80E85F /* Check Pods Manifest.lock */,
 				74E17C481761D28200F62507 /* Sources */,
 				74E17C491761D28200F62507 /* Frameworks */,
 				74E17C4A1761D28200F62507 /* Resources */,
+				65462743076D4B868E382D09 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,6 +243,37 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4C838F5610CE4924AE80E85F /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+		};
+		65462743076D4B868E382D09 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		74E17C481761D28200F62507 /* Sources */ = {
@@ -355,6 +369,7 @@
 		};
 		74E17C701761D28200F62507 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 658E30166ECD4C2A890ABA7B /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mihail Grushin (NVD9NMZMNS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mihail Grushin (NVD9NMZMNS)";
@@ -375,6 +390,7 @@
 		};
 		74E17C711761D28200F62507 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 658E30166ECD4C2A890ABA7B /* Pods.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: Mihail Grushin (NVD9NMZMNS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Mihail Grushin (NVD9NMZMNS)";

@@ -1,0 +1,2 @@
+platform :ios, '6.1'
+pod 'DVPlaylistPlayer', :git=>'https://github.com/denivip/DVPlaylistPlayer'
