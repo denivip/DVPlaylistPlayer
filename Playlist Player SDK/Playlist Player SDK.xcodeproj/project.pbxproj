@@ -21,8 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		74528CD61781982500E55934 /* THBinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E17C861762059000F62507 /* THBinder.m */; };
-		74528CD71781982500E55934 /* THObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E17C881762059000F62507 /* THObserver.m */; };
 		74A3736D1761CBD50003FB17 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 74A3736B1761CBD50003FB17 /* InfoPlist.strings */; };
 		74A373801761D0BC0003FB17 /* DVPlaylistPlayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 74A3737E1761D0BC0003FB17 /* DVPlaylistPlayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		74A373811761D0BC0003FB17 /* DVPlaylistPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A3737F1761D0BC0003FB17 /* DVPlaylistPlayer.m */; };
@@ -34,10 +32,6 @@
 		74E17C7E1761F77500F62507 /* DVAudioSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E17C7C1761F77500F62507 /* DVAudioSession.m */; };
 		74E17C801761F7D000F62507 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17C7F1761F7D000F62507 /* AudioToolbox.framework */; };
 		74E17C821761F7D500F62507 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74E17C811761F7D500F62507 /* MediaPlayer.framework */; };
-		74E17C8B1762059000F62507 /* THBinder.h in Headers */ = {isa = PBXBuildFile; fileRef = 74E17C851762059000F62507 /* THBinder.h */; };
-		74E17C8D1762059000F62507 /* THObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = 74E17C871762059000F62507 /* THObserver.h */; };
-		74E17C8F1762059000F62507 /* THObserversAndBinders-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 74E17C891762059000F62507 /* THObserversAndBinders-Prefix.pch */; };
-		74E17C901762059000F62507 /* THObserversAndBinders.h in Headers */ = {isa = PBXBuildFile; fileRef = 74E17C8A1762059000F62507 /* THObserversAndBinders.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,12 +52,6 @@
 		74E17C7C1761F77500F62507 /* DVAudioSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DVAudioSession.m; sourceTree = "<group>"; };
 		74E17C7F1761F7D000F62507 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		74E17C811761F7D500F62507 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		74E17C851762059000F62507 /* THBinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THBinder.h; sourceTree = "<group>"; };
-		74E17C861762059000F62507 /* THBinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THBinder.m; sourceTree = "<group>"; };
-		74E17C871762059000F62507 /* THObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THObserver.h; sourceTree = "<group>"; };
-		74E17C881762059000F62507 /* THObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = THObserver.m; sourceTree = "<group>"; };
-		74E17C891762059000F62507 /* THObserversAndBinders-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "THObserversAndBinders-Prefix.pch"; sourceTree = "<group>"; };
-		74E17C8A1762059000F62507 /* THObserversAndBinders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = THObserversAndBinders.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +72,6 @@
 			isa = PBXGroup;
 			children = (
 				74A373681761CBD40003FB17 /* DVPlaylistPlayerSDK */,
-				74E17C831762057800F62507 /* Vendor */,
 				74A373391761CB270003FB17 /* Frameworks */,
 				74A373381761CB270003FB17 /* Products */,
 			);
@@ -137,29 +124,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		74E17C831762057800F62507 /* Vendor */ = {
-			isa = PBXGroup;
-			children = (
-				74E17C841762059000F62507 /* THObserversAndBinders */,
-			);
-			name = Vendor;
-			path = DVPlaylistPlayer;
-			sourceTree = "<group>";
-		};
-		74E17C841762059000F62507 /* THObserversAndBinders */ = {
-			isa = PBXGroup;
-			children = (
-				74E17C851762059000F62507 /* THBinder.h */,
-				74E17C861762059000F62507 /* THBinder.m */,
-				74E17C871762059000F62507 /* THObserver.h */,
-				74E17C881762059000F62507 /* THObserver.m */,
-				74E17C891762059000F62507 /* THObserversAndBinders-Prefix.pch */,
-				74E17C8A1762059000F62507 /* THObserversAndBinders.h */,
-			);
-			name = THObserversAndBinders;
-			path = ../../THObservers/THObserversAndBinders;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -171,10 +135,6 @@
 				74E17C421761D17E00F62507 /* DVPlaylistPlayerSDK.h in Headers */,
 				74E17C791761DC6C00F62507 /* DVPlaylistPlayerView.h in Headers */,
 				74E17C7D1761F77500F62507 /* DVAudioSession.h in Headers */,
-				74E17C8B1762059000F62507 /* THBinder.h in Headers */,
-				74E17C8D1762059000F62507 /* THObserver.h in Headers */,
-				74E17C8F1762059000F62507 /* THObserversAndBinders-Prefix.pch in Headers */,
-				74E17C901762059000F62507 /* THObserversAndBinders.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,8 +222,6 @@
 				74A373811761D0BC0003FB17 /* DVPlaylistPlayer.m in Sources */,
 				74E17C7A1761DC6C00F62507 /* DVPlaylistPlayerView.m in Sources */,
 				74E17C7E1761F77500F62507 /* DVAudioSession.m in Sources */,
-				74528CD61781982500E55934 /* THBinder.m in Sources */,
-				74528CD71781982500E55934 /* THObserver.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
