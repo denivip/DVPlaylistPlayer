@@ -5,6 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = "https://github.com/denivip/DVPlaylistPlayer"
   s.author       = { "Mikhail Grushin" => "grushin@denivip.ru" }
   s.source       = { :git => "https://github.com/denivip/DVPlaylistPlayer"}
+  s.licence      = 'MIT'
   s.platform     = :ios, '>=5.0'
   s.ios.deployment_target = '5.0'
   s.source_files = 'Playlist Player SDK/DVPlaylistPlayer'
