@@ -46,7 +46,7 @@ typedef void (^TimeObserverBlock)(CMTime time);
 
 #pragma mark - Player control methods
 
-- (void)playMediaWithIndex:(NSInteger)index {
+- (void)playMediaAtIndex:(NSInteger)index {
     
     if (!self.dataSource ||
         [self.dataSource numberOfPlayerItems] < 1) {
@@ -77,7 +77,7 @@ typedef void (^TimeObserverBlock)(CMTime time);
     
     self.forcedStop = YES;
     
-    AVPlayerItem *playerItem = [self.dataSource queuePlayer:self playerItemForIndex:_currentItemIndex];
+    AVPlayerItem *playerItem = [self.dataSource queuePlayer:self playerItemAtIndex:_currentItemIndex];
     
     self.playerItemStatusObserver = [THObserver observerForObject:playerItem keyPath:@"status" block:^{
         switch (self.currentItem.status) {

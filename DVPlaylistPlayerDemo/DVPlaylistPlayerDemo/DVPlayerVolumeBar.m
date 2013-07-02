@@ -69,8 +69,7 @@
         _volume = 0.f;
     else if (volume > 0.98f)
         _volume = 1.f;
-    
-    //    CGFloat ratio = volume*self.bounds.size.width;
+
     CGRect frame = CGRectMake(0.f, 0.f,
                               self.volume*self.backgroundLayer.bounds.size.width,
                               self.backgroundLayer.bounds.size.height);

@@ -31,7 +31,7 @@ typedef NS_ENUM(NSUInteger, DVQueuePlayerState) {
 @property (nonatomic, readonly) DVQueuePlayerState state;
 @property (nonatomic, readonly) NSInteger currentItemIndex;
 
-- (void)playMediaWithIndex:(NSInteger)index;
+- (void)playMediaAtIndex:(NSInteger)index;
 - (void)resume;
 - (void)pause;
 - (void)stop;
@@ -48,7 +48,7 @@ typedef NS_ENUM(NSUInteger, DVQueuePlayerState) {
 
 @required
 - (NSUInteger)numberOfPlayerItems;
-- (AVPlayerItem *)queuePlayer:(DVPlaylistPlayer *)queuePlayer playerItemForIndex:(NSInteger)index;
+- (AVPlayerItem *)queuePlayer:(DVPlaylistPlayer *)queuePlayer playerItemAtIndex:(NSInteger)index;
 
 @end
 

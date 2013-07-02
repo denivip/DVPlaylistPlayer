@@ -305,18 +305,19 @@
     self.volumeLabel.center = CGPointMake(CGRectGetMaxX(self.volumeBar.frame) + 6.f + CGRectGetMidX(self.volumeLabel.bounds),
                                           self.volumeBar.center.y);
     
-    CGPoint center = CGPointMake(CGRectGetMidX(self.bounds) - 45.f,
+    CGPoint center = CGPointMake(CGRectGetMidX(self.bounds),
                                  CGRectGetMidY(self.bounds));
     
-    self.stopButton.center = center;
-    
-    self.playButton.center = CGPointMake(center.x - self.prevButton.bounds.size.width - BUTTONS_BETWEEN_SPACE,
+    self.playButton.center = CGPointMake(center.x - self.playButton.bounds.size.width/2 - BUTTONS_BETWEEN_SPACE/2,
                                          center.y);
     
-    self.prevButton.center = CGPointMake(center.x - 2*self.prevButton.bounds.size.width - 2*BUTTONS_BETWEEN_SPACE,
+    self.prevButton.center = CGPointMake(self.playButton.center.x - BUTTONS_BETWEEN_SPACE - self.prevButton.bounds.size.width,
                                          center.y);
     
-    self.nextButton.center = CGPointMake(center.x + self.nextButton.bounds.size.width + BUTTONS_BETWEEN_SPACE,
+    self.stopButton.center = CGPointMake(self.playButton.center.x + BUTTONS_BETWEEN_SPACE + self.stopButton.bounds.size.width,
+                                         center.y);
+    
+    self.nextButton.center = CGPointMake(self.stopButton.center.x + self.nextButton.bounds.size.width + BUTTONS_BETWEEN_SPACE,
                                          center.y);
     
     self.muteButton.center = CGPointMake(self.volumeBar.frame.origin.x - self.muteButton.bounds.size.width/2.f - 6.f,

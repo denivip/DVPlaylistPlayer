@@ -12,8 +12,8 @@
 #import <DVPlaylistPlayer/DVPlaylistPlayer.h>
 
 NSString *const urlString1 = @"http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
-NSString *const urlString2 = @"http://stream.alayam.com/alayam/alayam/playlist.m3u8";
-NSString *const urlString3 = @"http://www.nasa.gov/multimedia/nasatv/NTV-Public-IPS.m3u8";
+NSString *const urlString2 = @"http://tv.i-ghost.net/stream/TEST/116.m3u8";
+NSString *const urlString3 = @"http://tv.i-ghost.net/stream/TEST/139.m3u8";
 NSString *const urlString4 = @"http://iphone-streaming.ustream.tv/ustreamVideo/1524/streams/live/playlist.m3u8";
 NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/AL_ESP2_UK_ENG/playlist_400.m3u8";
 
@@ -31,7 +31,7 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 
 -(NSArray *)arrayOfNames {
     if (!_arrayOfNames) {
-        _arrayOfNames = [NSArray arrayWithObjects:@"BipBop", @"Alayam", @"NASA", @"UStream", @"EuroSport", nil];
+        _arrayOfNames = [NSArray arrayWithObjects:@"BipBop", @"National Geographic", @"Russia 24", @"TWiT", @"EuroSport", nil];
     }
     
     return _arrayOfNames;
@@ -86,12 +86,7 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
         [_playerInterface.prevButton addTarget:self action:@selector(prevButtonTap) forControlEvents:UIControlEventTouchUpInside];
         [_playerInterface.nextButton addTarget:self action:@selector(nextButtonTap) forControlEvents:UIControlEventTouchUpInside];
         [_playerInterface.muteButton addTarget:self action:@selector(muteButtonTap) forControlEvents:UIControlEventTouchUpInside];
-        
-        [_playerInterface.seekBar addTarget:self action:@selector(seekBarProgressChanged) forControlEvents:UIControlEventValueChanged];
         [_playerInterface.volumeBar addTarget:self action:@selector(volumeChanged) forControlEvents:UIControlEventValueChanged];
-        
-        [_playerInterface.elapsedButton addTarget:self action:@selector(timeButtonTap:) forControlEvents:UIControlEventTouchUpInside];
-        [_playerInterface.durationButton addTarget:self action:@selector(timeButtonTap:) forControlEvents:UIControlEventTouchUpInside];
     }
     
     return _playerInterface;
@@ -184,7 +179,7 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
         [self.playlistPlayer resume];
     } else {
         NSLog(@"Stop -> Play");
-        [self.playlistPlayer playMediaWithIndex:0];
+        [self.playlistPlayer playMediaAtIndex:0];
     }
 }
 
@@ -201,11 +196,6 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 - (void)nextButtonTap
 {
     [self.playlistPlayer next];
-}
-
-- (void)seekBarProgressChanged
-{
-//    [self.queuePlayer seekToPercent:[NSString stringWithFormat:@"%f%%", self.playerInterface.seekBar.progress*100.f]];
 }
 
 - (void)volumeChanged
@@ -228,21 +218,13 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
     }
 }
 
-- (void)timeButtonTap:(UIButton *)button
-{
-//    if (self.playerInterface.elapsedButton == button)
-//        [self.queuePlayer seekToPosition:self.playerInterface.elapsed-5.f];
-//    else if (self.playerInterface.durationButton == button)
-//        [self.queuePlayer seekToPosition:self.playerInterface.elapsed+5.f];
-}
-
 #pragma mark - Queue player data source
 
 -(NSUInteger)numberOfPlayerItems {
     return self.urlArray.count;
 }
 
--(AVPlayerItem *)queuePlayer:(DVPlaylistPlayer *)queuePlayer playerItemForIndex:(NSInteger)index {
+-(AVPlayerItem *)queuePlayer:(DVPlaylistPlayer *)queuePlayer playerItemAtIndex:(NSInteger)index {
     AVPlayerItem *item = [[AVPlayerItem alloc] initWithURL:[self.urlArray objectAtIndex:index]];
     return item;
 }
@@ -317,7 +299,7 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row < self.urlArray.count)
-        [self.playlistPlayer playMediaWithIndex:indexPath.row];
+        [self.playlistPlayer playMediaAtIndex:indexPath.row];
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
