@@ -37,6 +37,7 @@ The other way is to add source files to your project directly by copying them. H
 ###Framework###
 Also you can include DVPlaylistPlayer as a framework.
  - Clone the repository or download zip archive with SDK.
+ - Enter `pod install` in the console. This will install THObservers required by the player SDK project.
  - Under directory 'Playlist Player SDK' find and open the project 'PlaylistPlayerSDK.xcodeproj' in XCode.
  - Choose 'PlayerPlaylistAggregate' target and build the project.
  - File 'DVPlaylistPlayer.framework' will now appear under 'Products' directory of this project. Now you can easily link
