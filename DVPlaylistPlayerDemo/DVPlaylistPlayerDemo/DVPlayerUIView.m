@@ -12,7 +12,8 @@
 #import <QuartzCore/QuartzCore.h>
 
 #define FONT_SIZE 14.f
-#define BUTTONS_SIZE_MULT 1.5f
+#define BUTTONS_HORIZONTAL_SIZE_MULT 2.f
+#define BUTTONS_VERTICAL_SIZE_MULT 1.5f
 #define BUTTONS_BETWEEN_SPACE 6.f
 #define BUTTONS_CORNER_RADIUS 6.f
 
@@ -73,8 +74,8 @@
         [_playButton sizeToFit];
         
         CGRect frame = _playButton.frame;
-        frame.size = CGSizeMake(frame.size.width*BUTTONS_SIZE_MULT,
-                                frame.size.height*BUTTONS_SIZE_MULT);
+        frame.size = CGSizeMake(frame.size.width*BUTTONS_HORIZONTAL_SIZE_MULT,
+                                frame.size.height*BUTTONS_VERTICAL_SIZE_MULT);
         _playButton.frame = frame;
     }
     
@@ -94,8 +95,8 @@
         [_stopButton sizeToFit];
         
         CGRect frame = _stopButton.frame;
-        frame.size = CGSizeMake(frame.size.width*BUTTONS_SIZE_MULT,
-                                frame.size.height*BUTTONS_SIZE_MULT);
+        frame.size = CGSizeMake(frame.size.width*BUTTONS_HORIZONTAL_SIZE_MULT,
+                                frame.size.height*BUTTONS_VERTICAL_SIZE_MULT);
         _stopButton.frame = frame;
     }
     
@@ -114,8 +115,8 @@
         [_prevButton sizeToFit];
         
         CGRect frame = _prevButton.frame;
-        frame.size = CGSizeMake(frame.size.width*BUTTONS_SIZE_MULT,
-                                frame.size.height*BUTTONS_SIZE_MULT);
+        frame.size = CGSizeMake(frame.size.width*BUTTONS_HORIZONTAL_SIZE_MULT,
+                                frame.size.height*BUTTONS_VERTICAL_SIZE_MULT);
         _prevButton.frame = frame;
     }
     
@@ -134,8 +135,8 @@
         [_nextButton sizeToFit];
         
         CGRect frame = _nextButton.frame;
-        frame.size = CGSizeMake(frame.size.width*BUTTONS_SIZE_MULT,
-                                frame.size.height*BUTTONS_SIZE_MULT);
+        frame.size = CGSizeMake(frame.size.width*BUTTONS_HORIZONTAL_SIZE_MULT,
+                                frame.size.height*BUTTONS_VERTICAL_SIZE_MULT);
         _nextButton.frame = frame;
     }
     

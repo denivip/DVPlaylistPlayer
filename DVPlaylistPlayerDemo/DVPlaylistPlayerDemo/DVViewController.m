@@ -233,6 +233,7 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 
 - (void)queuePlayerDidStartPlaying:(DVPlaylistPlayer *)queuePlayer {
     NSLog(@"Started playing");
+    [self.playerInterface.playButton setTitle:@"Pause" forState:UIControlStateNormal];
     NSInteger index = queuePlayer.currentItemIndex;
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForItem:index inSection:0];
@@ -241,15 +242,17 @@ NSString *const urlString5 = @"http://esioslive4-i.akamaihd.net/hls/live/200736/
 
 - (void)queuePlayerDidResumePlaying:(DVPlaylistPlayer *)queuePlayer {
     NSLog(@"Resume playing");
+    [self.playerInterface.playButton setTitle:@"Pause" forState:UIControlStateNormal];
 }
 
 - (void)queuePlayerDidPausePlaying:(DVPlaylistPlayer *)queuePlayer {
     NSLog(@"Paused");
+    [self.playerInterface.playButton setTitle:@"Resume" forState:UIControlStateNormal];
 }
 
 - (void)queuePlayerDidStopPlaying:(DVPlaylistPlayer *)queuePlayer {
     NSLog(@"Stopped playing");
-    
+    [self.playerInterface.playButton setTitle:@"Play" forState:UIControlStateNormal];
     [self.playlistTableView deselectRowAtIndexPath:self.playlistTableView.indexPathForSelectedRow animated:YES];
 }
 
