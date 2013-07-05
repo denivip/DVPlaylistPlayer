@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>E6A609B8-C90E-4882-B392-E33C2ABC0520</string>
+	<key>IDESourceControlProjectName</key>
+	<string>DVPlaylistPlayerDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>6E032FCA-A205-42FC-A8D9-C652CBDDF81E</key>
+		<string>ssh://github.com/denivip/DVPlaylistPlayer.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>DVPlaylistPlayerDemo/DVPlaylistPlayerDemo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>6E032FCA-A205-42FC-A8D9-C652CBDDF81E</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/denivip/DVPlaylistPlayer.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>6E032FCA-A205-42FC-A8D9-C652CBDDF81E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>6E032FCA-A205-42FC-A8D9-C652CBDDF81E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>playlistPlayer</string>
+		</dict>
+	</array>
+</dict>
+</plist>

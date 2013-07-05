@@ -1,12 +1,8 @@
 xcuserdata
-Queue Player SDK/Queue Player SDK.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 DVQueuePlayerDemo/DVQueuePlayerDemo.xcodeproj/project.xcworkspace/contents.xcworkspacedata
-QueuePlayerSDK.xcworkspace/contents.xcworkspacedata
-Queue Player SDK/Products/DVQueuePlayer.framework/Versions/A/DVQueuePlayer
-Queue Player SDK/Products/DVQueuePlayer.framework/Versions/A/Headers/DVQueuePlayer.h
-Playlist Player SDK/Playlist Player SDK.xcodeproj/project.xcworkspace/contents.xcworkspacedata
-Playlist Player SDK/Playlist Player SDK.xcodeproj/project.xcworkspace/xcshareddata/Queue Player SDK.xccheckout
 PlaylistPlayer.xcworkspace/contents.xcworkspacedata
 PlaylistPlayer.xcworkspace/xcshareddata/Queue Player SDK.xccheckout
 Playlist Player SDK/Products
 contents.xcworkspacedata
+Podfile.lock
+DVPlaylistPlayerDemo/Pods
