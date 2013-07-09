@@ -34,15 +34,6 @@ The other way is to add source files to your project directly by copying them. H
  - Open your project in XCode and drag-and-drop all files from directory 'DVPlaylistPlayer' to your project.
  - import class DVPlaylistPlayer.h to any implementation or header file where you want to use it.
  
-###Framework###
-Also you can include DVPlaylistPlayer as a framework.
- - Clone the repository or download zip archive with SDK.
- - Enter `pod install` in the console. This will install THObservers required by the player SDK project.
- - Under directory 'Playlist Player SDK' find and open the project 'PlaylistPlayerSDK.xcodeproj' in XCode.
- - Choose 'PlayerPlaylistAggregate' target and build the project.
- - File 'DVPlaylistPlayer.framework' will now appear under 'Products' directory of this project. Now you can easily link
- you project with this framework and use it. But don't forget to include all the required frameworks to your project also!
- 
 ##Usage##
 DVPlaylistPlayer is really easy to use. All you need to start playing media is to create an instance:
 
