@@ -5,7 +5,7 @@ DVPlaylistPlayer is an easy-to-use AVQueuePlayer-like player with wider capabili
 Unlike AVQueuePlayer here you have all the basic player controls like moving to next or previous video, mute, unmute or 
 change volume level and so on. Another difference with AVQueuePlayer is in non-regular way of setting the list of tracks. 
 This player takes it's tracks from data source like UITableView.
-Detailed implementation and usage information provided in our blog - http://blog.denivip.ru/?p=4353
+Detailed implementation and usage information provided in our blog - http://blog.denivip.ru/index.php/2013/07/playlist-player-for-ios/?lang=en
 
 ##Required frameworks##
  - MediaPlayer
